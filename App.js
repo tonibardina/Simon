@@ -1,21 +1,49 @@
 import React, { Component } from 'react'
 import {
-  StyleSheet,
-  View
+  View,
+  AsyncStorage
 } from 'react-native'
+
 import GamesMenu from './Screens/GamesMenu'
 import Background from './Components/GameComponents/Background'
 import Levels from './Screens/Levels'
 import Level1 from './Screens/Level1/Level1'
+import RegisterPage from './Components/GameComponents/RegisterPage'
 
 export default class App extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      screen: 'menu'
+      user: {
+        username: null,
+        points: 'points',
+        levelsUnBlocked: 1
+      },
+      screen: 'noResgistered'
     }
     this.setScreen = this.setScreen.bind(this)
     this.screen = this.screen.bind(this)
+    this.setUser = this.setUser.bind(this)
+  }
+
+  componentDidMount () {
+    AsyncStorage.getItem('username').then((value) => {
+      console.log('value--->' + value)
+      this.setState({
+        user: {
+          username: value,
+          points: 'points',
+          levelsUnBlocked: 1
+        }})
+    }).done()
+    //AsyncStorage.removeItem('username', ()=>{console.log('blabla')})
+  }
+
+  setUser (value) {
+    AsyncStorage.setItem('username', value)
+    this.setState({
+      username: value
+    })
   }
 
   setScreen (value) {
@@ -25,18 +53,17 @@ export default class App extends Component {
   }
 
   screen () {
-    if (this.state.screen === 'menu') { return <GamesMenu setScreen={this.setScreen} /> }
+    if (this.state.screen === 'menu') { return <GamesMenu setScreen={this.setScreen} username={this.state.user.username}/> }
     if (this.state.screen === 'levels') { return <Levels setScreen={this.setScreen} /> }
     if (this.state.screen === 'level1') { return <Level1 setScreen={this.setScreen} /> }
+    if (this.state.screen === 'noResgistered') { return <RegisterPage setUser={this.setUser} /> }
   }
 
   render () {
     return (
       <View style={{flex: 1}}>
         <Background />
-        <View style={{position: 'absolute', width: '100%', height: '100%', alignItems: 'center', top: 0, left: 0, backgroundColor: 'transparent'}}>
-          {this.screen()}
-        </View>
+        {this.screen()}
       </View>
     )
   }
