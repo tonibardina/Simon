@@ -21,7 +21,7 @@ class Levels extends Component {
   render () {
     return (
       <View style={{position: 'absolute', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center'}} >
-        <View style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center',}}>
+        <View style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
           <TouchableHighlight onPress={this.chooseLevel1} style={styles.level1}>
             <Text style={{color: 'white'}}>
               Level 1

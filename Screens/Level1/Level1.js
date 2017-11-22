@@ -6,7 +6,6 @@ import L4 from './L4'
 import L5 from './L5'
 import LevelCompleted from './LevelCompleted'
 import Cube from '../../Components/GameComponents/Cube'
-import Background from '../../Components/GameComponents/Background'
 import ProgresBar from '../../Components/GameComponents/ProgresBar'
 
 import {
@@ -40,9 +39,9 @@ class Level1 extends Component {
   getLevelStructure () {
     if (this.state.lvl !== 'end') {
       return (
-        <View style={{flex: 1, alignItems: 'center', backgroundColor: 'transparent', width: 500}}>
+        <View style={{position: 'absolute', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
           <View style={{backgroundColor: '#210b38', justifyContent: 'flex-start', alignItems: 'center', width: '100%'}}>
-            <Text style={{color: 'white', fontSize: 17, fontWeight: '500', top: 40, marginBottom: 40}}>
+            <Text style={{color: 'red', fontSize: 17, fontWeight: '500', top: 40, marginBottom: 40}}>
               Level {this.state.lvl}
             </Text>
             <ProgresBar value={this.state.lvl} />

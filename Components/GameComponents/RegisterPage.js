@@ -9,6 +9,21 @@ import {
 } from 'react-native'
 
 class RegisterPage extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {}
+    this.registerDone = this.registerDone.bind(this)
+    this.setUsername = this.setUsername.bind(this)
+  }
+
+  setUsername (value) {
+    this.props.setUser(value)
+  }
+
+  registerDone () {
+    this.props.setScreen('menu')
+  }
+
   render () {
     return (
       <View style={{
@@ -27,8 +42,11 @@ class RegisterPage extends Component {
         </Text>
         <TextInput
           style={{marginTop: 20, height: 30, width: 200, backgroundColor: 'white', borderWidth: 1, top: '20%'}}
-          onChangeText={(text) => this.props.setUser(text)}
+          onChangeText={this.setUsername}
         />
+        <TouchableHighlight onPress={this.registerDone} style={{width: 100, alignItems: 'center', borderRadius: 20, top: 150}}>
+          <Image source={require('../../art/startButton.png')} />
+        </TouchableHighlight>
       </View>
     )
   }

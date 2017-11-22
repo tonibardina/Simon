@@ -25,7 +25,7 @@ class GamesMenu extends Component {
           <Image style={{width: 200, height: 150, resizeMode: 'stretch', backgroundColor: 'transparent'}} source={require('../art/tittlex3.png')} />
         </View>
         <View>
-          <Text style={{color: 'white', fontSize: 30}}>
+          <Text style={{backgroundColor: 'transparent', color: 'white', fontSize: 30}}>
             Hello {this.props.username} !
           </Text>
         </View>
