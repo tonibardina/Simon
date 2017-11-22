@@ -45,7 +45,9 @@ class RegisterPage extends Component {
           onChangeText={this.setUsername}
         />
         <TouchableHighlight onPress={this.registerDone} style={{width: 100, alignItems: 'center', borderRadius: 20, top: 150}}>
-          <Image source={require('../../art/startButton.png')} />
+          <Text style={{color: 'white', fontSize: 20}}>
+            START
+          </Text>
         </TouchableHighlight>
       </View>
     )
