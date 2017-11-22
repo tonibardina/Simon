@@ -3,6 +3,7 @@ import {
   AsyncStorage,
   View
 } from 'react-native'
+
 import GamesMenu from './Screens/GamesMenu'
 import Background from './Components/GameComponents/Background'
 import Levels from './Screens/Levels'
@@ -59,6 +60,7 @@ export default class App extends Component {
   }
 
   setScreen (value) {
+    console.log(value)
     this.setState({
       screen: value
     })
@@ -74,10 +76,7 @@ export default class App extends Component {
   render () {
     return (
       <View style={{flex: 1}}>
-        <Background />
-        <View style={{position: 'absolute', width: '100%', height: '100%', alignItems: 'center', top: 0, left: 0, backgroundColor: 'transparent'}}>
-          {this.screen()}
-        </View>
+        {this.screen()}
       </View>
     )
   }
