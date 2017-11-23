@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Background from '../../Components/GameComponents/Background'
 
 import {
   StyleSheet,
@@ -29,7 +28,6 @@ class LevelCompleted extends Component {
   render () {
     return (
       <View>
-        <Background />
         <View style={{position: 'absolute', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
           <Text style={styles.tittle}>
             Congratulations!
@@ -63,7 +61,7 @@ const styles = StyleSheet.create({
   },
   levelUp: {
     backgroundColor: 'rgba(153, 51, 153, 0.6)',
-    padding: 12,
+    padding: 20,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 15,
@@ -72,7 +70,7 @@ const styles = StyleSheet.create({
   },
   return: {
     backgroundColor: 'rgba(51, 0, 102, 0.8)',
-    padding: 12,
+    padding: 20,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 15,

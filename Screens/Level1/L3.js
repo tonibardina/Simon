@@ -2,16 +2,45 @@ import React, { Component } from 'react'
 import Go from '../../Components/GameComponents/Go'
 import CubeBlack from '../../Components/GameComponents/CubeBlack'
 import ErrorModal from '../../Components/GameComponents/ErrorModal'
+import Achievment from '../../Components/GameComponents/Achievment'
 
 import {
-  View
+  View,
+  AsyncStorage
 } from 'react-native'
 
 class L3 extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      modalVisible: false
+    }
+  }
+
+  componentDidMount () {
+    AsyncStorage.getItem('achievment').then((value) =>{
+      if(value === null) {
+        AsyncStorage.setItem('achievment', '1')
+        this.setState({
+          modalVisible: true
+        });
+      } else {
+        console.log('achievment already unbloqued')
+      }
+    })
+  }
+
+  hideModal = () => {
+    this.setState({
+      modalVisible: false
+    });
+  }
+
   render () {
     return (
       <View style={{position: 'absolute', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center', top: 40}} >
         <ErrorModal modalVisible={this.props.modalVisible} errorWindow={this.props.errorWindow} level={this.props.level} />
+        <Achievment modalVisible={this.state.modalVisible} hideModal={this.hideModal} />
         <View style={{
           flexDirection: 'row',
           justifyContent: 'space-around',

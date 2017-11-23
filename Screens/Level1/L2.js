@@ -1,23 +1,16 @@
 import React, { Component } from 'react'
 import Go from '../../Components/GameComponents/Go'
 import ErrorModal from '../../Components/GameComponents/ErrorModal'
-import Background from '../../Components/GameComponents/Background'
-import ProgresBar from '../../Components/GameComponents/ProgresBar'
 
 import {
-  View,
-  Text
+  View
 } from 'react-native'
 
-class L2 extends Component {
-  constructor (props) {
-    super(props)
-    this.state = {level: 2}
-  }
+class L2 extends Component { 
   render () {
     return (
-      <View style={{ justifyContent: 'center', alignItems: 'center', backgroundColor: 'transparent', top: 40}}>
-        <ErrorModal modalVisible={this.props.modalVisible} errorWindow={this.props.errorWindow} level={this.state.level} />
+      <View style={{justifyContent: 'center', alignItems: 'center', backgroundColor: 'transparent', top: 40}}>
+        <ErrorModal modalVisible={this.props.modalVisible} errorWindow={this.props.errorWindow} level={this.props.level} />
         <View style={{flexDirection: 'row', marginTop: 30}}>
           {this.props.cubeGenerator(1, 'powderblue')}
           {this.props.cubeGenerator(2, 'skyblue')}

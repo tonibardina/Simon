@@ -13,16 +13,13 @@ class ErrorModal extends Component {
     this.state = {
 
     }
-    this.showProgresion = this.showProgresion.bind(this)
-    this.showMotivationalText = this.showMotivationalText.bind(this)
-    this.textStyleGenerator = this.textStyleGenerator.bind(this)
   }
 
-  textStyleGenerator () {
+  textStyleGenerator = () => {
     return {fontSize: 90, fontWeight: '400', color: 'white', marginBottom: 5}
   }
 
-  showProgresion () {
+  showProgresion = () => {
     if (this.props.level === 1) { return <Text style={this.textStyleGenerator()}>0%</Text> }
     if (this.props.level === 2) { return <Text style={this.textStyleGenerator()}>20%</Text> }
     if (this.props.level === 3) { return <Text style={this.textStyleGenerator()}>40%</Text> }
@@ -30,7 +27,7 @@ class ErrorModal extends Component {
     if (this.props.level === 5) { return <Text style={this.textStyleGenerator()}>80%</Text> }
   }
 
-  showMotivationalText () {
+  showMotivationalText = () => {
     if (this.props.level === 1) { return 'It is too soon to give up...' }
     if (this.props.level === 2) { return 'Really? You can do it better!' }
     if (this.props.level === 3) { return 'Keep trying..You are doing well!' }

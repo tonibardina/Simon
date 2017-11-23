@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import {
   AsyncStorage,
-  View
+  View,
+  Image
 } from 'react-native'
 import GamesMenu from './Screens/GamesMenu'
-import Background from './Components/GameComponents/Background'
 import Levels from './Screens/Levels'
 import Level1 from './Screens/Level1/Level1'
 import Level2 from './Screens/Level2/Level2'
@@ -21,13 +21,12 @@ export default class App extends Component {
         levelsUnBlocked: 1
       }
     }
-    this.setScreen = this.setScreen.bind(this)
-    this.screen = this.screen.bind(this)
-    this.setUser = this.setUser.bind(this)
   }
 
   componentDidMount () {
+    //AsyncStorage.removeItem('level')
     //AsyncStorage.removeItem('username')
+    //AsyncStorage.removeItem('achievment')
     AsyncStorage.getItem('level').then((value) => { console.log('-------->' + value) })
     if (this.state.screen === 'noregistered' || this.state.screen === 'menu') {
       AsyncStorage.getItem('username').then((value) => {
@@ -49,7 +48,7 @@ export default class App extends Component {
     }
   }
 
-  setUser (value) {
+  setUser = (value) => {
     AsyncStorage.setItem('username', value)
     this.setState({
       user: {
@@ -60,13 +59,13 @@ export default class App extends Component {
     })
   }
 
-  setScreen (value) {
+  setScreen = (value) => {
     this.setState({
       screen: value
     })
   }
 
-  screen () {
+  screen = () => {
     if (this.state.screen === 'menu') { return <GamesMenu setScreen={this.setScreen} username={this.state.user.username} /> }
     if (this.state.screen === 'levels') { return <Levels setScreen={this.setScreen} /> }
     if (this.state.screen === 'level1') { return <Level1 setScreen={this.setScreen} /> }
@@ -76,8 +75,8 @@ export default class App extends Component {
 
   render () {
     return (
-      <View style={{flex: 1}}>
-        <Background />
+      <View style={{flex: 1, backgroundColor: '#0e0417'}}>
+        <Image syle={{flex: 1, resizeMode: 'stretch', top: 0, left: 0}} source={require('./art/back-prueba.png')} />
         <View style={{position: 'absolute', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center', top: 0, left: 0, backgroundColor: 'transparent'}}>
           {this.screen()}
         </View>
