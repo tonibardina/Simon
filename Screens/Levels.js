@@ -3,16 +3,18 @@ import React, { Component } from 'react'
 import {
   StyleSheet,
   View,
+  ScrollView,
   Text,
   TouchableHighlight,
-  AsyncStorage
+  AsyncStorage,
+  Image
 } from 'react-native'
 
 class Levels extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      levels: ''
+      level: ''
     }
   }
 
@@ -20,9 +22,25 @@ class Levels extends Component {
     //AsyncStorage.removeItem('level')
     AsyncStorage.getItem('level').then((value) => {
       this.setState({
-        levels: value,
+        level: value,
       });
     })
+  }
+
+  level2 = () => {
+    if (this.state.level < 2) { 
+      return <Image source={require('../art/lvl2B.png')} /> 
+    } else {
+      return <Image source={require('../art/lvl2.png')} />
+    }
+  } 
+
+  level3 = () => {
+    if (this.state.level < 3) { 
+      return <Image source={require('../art/lvl3B.png')} /> 
+    } else {
+      console.log('in progres...')
+    }
   }
 
   chooseLevel1 = () => {
@@ -35,59 +53,26 @@ class Levels extends Component {
     })
   }
 
-  chooseLevel3 = () => {
-    try {
-      const level = AsyncStorage.getItem('level')
-      if (level > 1) { this.props.setScreen('level3')}
-    } catch (error){
-      console.log(error)
-    }
-  }
-
   render () {
     return (
-      <View style={{position: 'absolute', width: '80%', height: '80%', justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(51, 0, 102, 0.4)', borderRadius: 20}} >
-        <View style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center',}}>
-          <TouchableHighlight onPress={this.chooseLevel1} style={styles.level}>
-            <Text style={{color: 'white'}}>
-              Level 1
-            </Text>
-          </TouchableHighlight>
-          <TouchableHighlight onPress={this.chooseLevel2} style={this.state.levels > 1 ? styles.level : styles.levelBloqued}>
-            <Text style={{color: 'white'}}>
-              Level 2
-            </Text>
-          </TouchableHighlight>
-          <TouchableHighlight onPress={this.chooseLevel3} style={this.state.levels > 2 ? styles.level : styles.levelBloqued}>
-            <Text style={{color: 'white'}}>
-              Level 3
-            </Text>
-          </TouchableHighlight>
-        </View>
+      <View style={{backgroundColor: 'transparent', position: 'absolute', width: '100%', height: '50%', alignItems: 'center'}} >
+        <ScrollView contentContainerStyle={{justifyContent: 'flex-start'}} showsHorizontalScrollIndicator={false} centerContent={true} horitzontal={true} backgroundColor={'transparent'} >
+          <View style={{flexDirection: 'row'}} >
+            <TouchableHighlight style={{marginLeft: 60, marginRight: 10}} onPress={this.chooseLevel1} underlayColor={'white'}>
+              <Image source={require('../art/lvl1.png')} />
+            </TouchableHighlight>
+            <TouchableHighlight style={{marginLeft: 25, marginRight: 10}} onPress={this.chooseLevel2} underlayColor={'white'}>
+              {this.level2()}
+            </TouchableHighlight>
+            <TouchableHighlight style={{marginLeft: 25}} onPress={this.chooseLevel3} underlayColor={'white'}>
+              {this.level3()}
+            </TouchableHighlight>
+          </View>
+        </ScrollView>
       </View>
     )
   }
 }
 
-const styles = StyleSheet.create({
-  level: {
-    backgroundColor: 'rgba(153, 0, 204, 0.8)',
-    padding: 12,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 15,
-    margin: 5,
-    width: 200,
-  },
-  levelBloqued: {
-    backgroundColor: 'rgba(21, 0, 102, 0.8)',
-    padding: 12,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 15,
-    margin: 5,
-    width: 200
-  },
-})
 
 export default Levels
