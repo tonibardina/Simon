@@ -55,16 +55,16 @@ class Levels extends Component {
 
   render () {
     return (
-      <View style={{backgroundColor: 'transparent', position: 'absolute', width: '100%', height: '50%', alignItems: 'center'}} >
-        <ScrollView contentContainerStyle={{justifyContent: 'flex-start'}} showsHorizontalScrollIndicator={false} centerContent={true} horitzontal={true} backgroundColor={'transparent'} >
+      <View style={{backgroundColor: 'transparent', position: 'absolute', width: '100%', height: '40%', alignItems: 'center'}} >
+        <ScrollView contentContainerStyle={{alignItems: 'flex-start', justifyContent: 'center', backgroundColor: 'transparent', left: 0}} showsHorizontalScrollIndicator={false}  horitzontal={true} backgroundColor={'transparent'} >
           <View style={{flexDirection: 'row'}} >
-            <TouchableHighlight style={{marginLeft: 60, marginRight: 10}} onPress={this.chooseLevel1} underlayColor={'white'}>
+            <TouchableHighlight style={{marginLeft: 60, marginRight: 10}} onPress={this.chooseLevel1}>
               <Image source={require('../art/lvl1.png')} />
             </TouchableHighlight>
-            <TouchableHighlight style={{marginLeft: 25, marginRight: 10}} onPress={this.chooseLevel2} underlayColor={'white'}>
+            <TouchableHighlight style={{marginLeft: 25, marginRight: 10}} onPress={this.chooseLevel2}>
               {this.level2()}
             </TouchableHighlight>
-            <TouchableHighlight style={{marginLeft: 25}} onPress={this.chooseLevel3} underlayColor={'white'}>
+            <TouchableHighlight style={{marginLeft: 25}} onPress={this.chooseLevel3}>
               {this.level3()}
             </TouchableHighlight>
           </View>
