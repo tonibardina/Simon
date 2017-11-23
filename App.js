@@ -7,6 +7,7 @@ import GamesMenu from './Screens/GamesMenu'
 import Background from './Components/GameComponents/Background'
 import Levels from './Screens/Levels'
 import Level1 from './Screens/Level1/Level1'
+import Level2 from './Screens/Level2/Level2'
 import RegisterPage from './Components/GameComponents/RegisterPage'
 
 export default class App extends Component {
@@ -27,6 +28,7 @@ export default class App extends Component {
 
   componentDidMount () {
     //AsyncStorage.removeItem('username')
+    AsyncStorage.getItem('level').then((value) => { console.log('-------->' + value) })
     if (this.state.screen === 'noregistered' || this.state.screen === 'menu') {
       AsyncStorage.getItem('username').then((value) => {
         if (value === null) {
@@ -68,6 +70,7 @@ export default class App extends Component {
     if (this.state.screen === 'menu') { return <GamesMenu setScreen={this.setScreen} username={this.state.user.username} /> }
     if (this.state.screen === 'levels') { return <Levels setScreen={this.setScreen} /> }
     if (this.state.screen === 'level1') { return <Level1 setScreen={this.setScreen} /> }
+    if (this.state.screen === 'level2') { return <Level2 setScreen={this.setScreen} /> }
     if (this.state.screen === 'noregistered') { return <RegisterPage setUser={this.setUser} setScreen={this.setScreen} /> }
   }
 
@@ -75,7 +78,7 @@ export default class App extends Component {
     return (
       <View style={{flex: 1}}>
         <Background />
-        <View style={{position: 'absolute', width: '100%', height: '100%', alignItems: 'center', top: 0, left: 0, backgroundColor: 'transparent'}}>
+        <View style={{position: 'absolute', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center', top: 0, left: 0, backgroundColor: 'transparent'}}>
           {this.screen()}
         </View>
       </View>

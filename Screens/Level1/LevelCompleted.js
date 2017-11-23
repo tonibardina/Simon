@@ -5,13 +5,25 @@ import {
   StyleSheet,
   View,
   Text,
-  TouchableHighlight
+  TouchableHighlight,
+  AsyncStorage
 } from 'react-native'
 
 class LevelCompleted extends Component {
   constructor (props) {
     super(props)
     this.state = {}
+  }
+
+  nextLevel = () => {
+    AsyncStorage.getItem('level').then((value) => {
+      if (!value) {
+        AsyncStorage.setItem('level', '2')
+      } else {
+        console.log('next level!')
+      }
+    })
+    return this.props.setScreen('level2')
   }
 
   render () {
@@ -25,9 +37,9 @@ class LevelCompleted extends Component {
           <Text style={{margin: 25, backgroundColor: 'transparent', color: 'white'}}>
             You just completed Level 1!
           </Text>
-          <TouchableHighlight style={styles.levelUp} underlayColor={'white'} onPress={this.props.goToMenu} >
+          <TouchableHighlight style={styles.levelUp} underlayColor={'white'} onPress={this.nextLevel} >
             <Text style={{color: 'white'}}>
-              Go to Level 2!
+              Next Level !
             </Text>
           </TouchableHighlight>
           <TouchableHighlight style={styles.return} underlayColor={'white'} onPress={this.props.goToMenu} >

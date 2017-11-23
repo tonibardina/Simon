@@ -6,12 +6,12 @@ import L4 from './L4'
 import L5 from './L5'
 import LevelCompleted from './LevelCompleted'
 import Cube from '../../Components/GameComponents/Cube'
-import Background from '../../Components/GameComponents/Background'
 import ProgresBar from '../../Components/GameComponents/ProgresBar'
 
 import {
   View,
-  Text
+  Text,
+  AsyncStorage
 } from 'react-native'
 
 class Level1 extends Component {
@@ -27,17 +27,15 @@ class Level1 extends Component {
       modalVisible: false,
       clicked: false
     }
-    this.changeLevel = this.changeLevel.bind(this)
-    this.goToMenu = this.goToMenu.bind(this)
-    this.gameIsInCurse = this.gameIsInCurse.bind(this)
-    this.startSequence = this.startSequence.bind(this)
-    this.userResponse = this.userResponse.bind(this)
-    this.gameCompleted = this.gameCompleted.bind(this)
-    this.cubeGenerator = this.cubeGenerator.bind(this)
-    this.errorWindow = this.errorWindow.bind(this)
   }
 
-  getLevelStructure () {
+  //Preparing components
+
+  cubeGenerator = (num, color) => {
+    return <Cube sequence={this.state.sequence} game={this.state.game} id={num} userResponse={this.userResponse} playing={this.state.playing} gameCompleted={this.gameCompleted} completed={this.state.completed} color={color} size={60} />
+  }
+
+  getLevelStructure = () => {
     if (this.state.lvl !== 'end') {
       return (
         <View style={{flex: 1, alignItems: 'center', backgroundColor: 'transparent', width: 500}}>
@@ -51,11 +49,11 @@ class Level1 extends Component {
         </View>
       )
     } else {
-      return <LevelCompleted goToMenu={this.goToMenu} nextLevel={this.nextLevel} />
+      return <LevelCompleted goToMenu={this.goToMenu} nextLevel={this.nextLevel} setScreen={this.props.setScreen} />
     }
   }
 
-  getLevels () {
+  getLevels = () => {
     if (this.state.lvl === 1) { return <L1 changeLevel={this.changeLevel} level={this.state.lvl} modalVisible={this.state.modalVisible} startSequence={this.startSequence} clicked={this.state.clicked} cubeGenerator={this.cubeGenerator} errorWindow={this.errorWindow} /> }
     if (this.state.lvl === 2) { return <L2 changeLevel={this.changeLevel} level={this.state.lvl} modalVisible={this.state.modalVisible} startSequence={this.startSequence} clicked={this.state.clicked} cubeGenerator={this.cubeGenerator} errorWindow={this.errorWindow} /> }
     if (this.state.lvl === 3) { return <L3 changeLevel={this.changeLevel} level={this.state.lvl} modalVisible={this.state.modalVisible} startSequence={this.startSequence} clicked={this.state.clicked} cubeGenerator={this.cubeGenerator} errorWindow={this.errorWindow} /> }
@@ -63,21 +61,7 @@ class Level1 extends Component {
     if (this.state.lvl === 5) { return <L5 changeLevel={this.changeLevel} level={this.state.lvl} modalVisible={this.state.modalVisible} startSequence={this.startSequence} clicked={this.state.clicked} cubeGenerator={this.cubeGenerator} errorWindow={this.errorWindow} game={this.state.game} playing={this.state.playing} gameCompleted={this.gameCompleted} sequence={this.state.sequence} userResponse={this.userResponse} /> }
   }
 
-  changeLevel (number) {
-    this.setState({
-      lvl: number
-    })
-  }
-
-  goToMenu () {
-    this.props.setScreen('menu')
-  }
-
-  cubeGenerator (num, color) {
-    return <Cube sequence={this.state.sequence} game={this.state.game} id={num} userResponse={this.userResponse} playing={this.state.playing} gameCompleted={this.gameCompleted} completed={this.state.completed} color={color} size={60} />
-  }
-
-  startSequence () {
+  startSequence = () => {
     this.setState({
       game: [],
       playing: false,
@@ -98,7 +82,7 @@ class Level1 extends Component {
     }, 350)
   }
 
-  gameIsInCurse () {
+  gameIsInCurse = () => {
     this.setState({
       game: [],
       counter: 0,
@@ -106,7 +90,7 @@ class Level1 extends Component {
     })
   }
 
-  userResponse (cube) {
+  userResponse = (cube) => {
     if (cube !== this.state.sequence[this.state.counter]) {
       this.setState({
         game: [],
@@ -120,7 +104,7 @@ class Level1 extends Component {
     }
   }
 
-  errorWindow () {
+  errorWindow = () => {
     this.setState({
       lvl: 1,
       modalVisible: false,
@@ -132,7 +116,7 @@ class Level1 extends Component {
     this.changeLevel(1)
   }
 
-  gameCompleted () {
+  gameCompleted = () => {
     let sequences = [
       ['jojo'],
       [2, 1, 4, 3],
@@ -158,6 +142,23 @@ class Level1 extends Component {
         clicked: false
       })
     }
+  }
+
+  changeLevel = (number) => {
+    this.setState({
+      lvl: number
+    })
+  }
+
+  goToMenu = () => {
+    AsyncStorage.getItem('level').then((value) => {
+      if (!value) {
+        console.log('-------SHIT--------')
+        AsyncStorage.setItem('level', 2)
+      } else {
+      }
+    })
+    this.props.setScreen('menu')
   }
 
   render () {

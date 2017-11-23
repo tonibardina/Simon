@@ -29,10 +29,10 @@ class GamesMenu extends Component {
             Hello {this.props.username} !
           </Text>
         </View>
-        <View style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
-          <TouchableHighlight onPress={this.chooseGame1} style={{width: 100, alignItems: 'center', borderRadius: 20}}>
-            <Text style={{backgroundColor: '#040419', color: 'white', padding: 10, width: 150, textAlign: 'center', borderRadius: 10, top: 150}}>
-              Play
+        <View style={{position: 'absolute', justifyContent: 'center', alignItems: 'center', borderRadius: 20, backgroundColor: '#040419', top: '75%', width: 150}}>
+          <TouchableHighlight onPress={this.chooseGame1} style={{width: 100, alignItems: 'center'}}>
+            <Text style={{color: 'white', padding: 10, width: 150, textAlign: 'center'}}>
+              START
             </Text>
           </TouchableHighlight>
         </View>
