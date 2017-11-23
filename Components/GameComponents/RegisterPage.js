@@ -34,10 +34,10 @@ class RegisterPage extends Component {
         justifyContent: 'flex-start',
         top: 0,
         left: 0,
-        backgroundColor: 'transparent'
+        backgroundColor: 'rgba(35, 10, 46, 0.7)'
       }}>
         <Image style={{width: 200, height: 150, resizeMode: 'stretch', backgroundColor: 'transparent', top: '19%'}} source={require('../../art/tittlex3.png')} />
-        <Text style={{color: 'white', backgroundColor: '#130721', padding: 15, borderRadius: 2, top: '21%', width: '100%', textAlign: 'center'}}>
+        <Text style={{fontSize: 26, color: 'white', backgroundColor: 'transparent', padding: 15, borderRadius: 2, top: '21%', width: '100%', textAlign: 'center'}}>
           Hello, how do you want me to call you?
         </Text>
         <TextInput

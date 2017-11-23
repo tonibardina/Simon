@@ -26,10 +26,9 @@ export default class App extends Component {
   }
 
   componentDidMount () {
-    //AsyncStorage.removeItem('level')
-    //AsyncStorage.removeItem('username')
-    //AsyncStorage.removeItem('achievment')
-    //AsyncStorage.getItem('level').then((value) => { console.log('-------->' + value) })
+    /*AsyncStorage.removeItem('level')
+    AsyncStorage.removeItem('username')
+    AsyncStorage.removeItem('achievment')*/
     if (this.state.screen === 'noregistered' || this.state.screen === 'menu') {
       AsyncStorage.getItem('username').then((value) => {
         if (value === null) {

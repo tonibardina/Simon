@@ -13,7 +13,8 @@ class L3 extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      modalVisible: false
+      modalVisible: false,
+      achieve: 1
     }
   }
 
@@ -40,7 +41,7 @@ class L3 extends Component {
     return (
       <View style={{position: 'absolute', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center', top: '12%'}} >
         <ErrorModal modalVisible={this.props.modalVisible} errorWindow={this.props.errorWindow} level={this.props.level} />
-        <Achievment modalVisible={this.state.modalVisible} hideModal={this.hideModal} />
+        <Achievment modalVisible={this.state.modalVisible} hideModal={this.hideModal} achieve={this.state.achieve}/>
         <View style={{
           flexDirection: 'row',
           justifyContent: 'space-around',

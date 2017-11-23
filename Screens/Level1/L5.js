@@ -3,21 +3,43 @@ import Go from '../../Components/GameComponents/Go'
 import ErrorModal from '../../Components/GameComponents/ErrorModal'
 import HelpCube from '../../Components/GameComponents/HelpCube'
 import HelpCubeActivator from '../../Components/GameComponents/HelpCubeActivator'
+import Achievment from '../../Components/GameComponents/Achievment'
 
 import {
-  View
+  View,
+  AsyncStorage
 } from 'react-native'
 
 class L5 extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      HelpCubeIsActive: false
+      HelpCubeIsActive: false,
+      achieve: 2,
+      modalVisible: false
     }
-    this.setHelpCubeIsActive = this.setHelpCubeIsActive.bind(this)
   }
 
-  setHelpCubeIsActive () {
+  componentDidMount () {
+    AsyncStorage.getItem('achievment').then((value) =>{
+      if(value === '1') {
+        AsyncStorage.setItem('achievment', '2')
+        this.setState({
+          modalVisible: true
+        });
+      } else {
+        console.log('achievment already unlocked')
+      }
+    })
+  }
+
+  hideModal = () => {
+    this.setState({
+      modalVisible: false
+    });
+  }
+
+  setHelpCubeIsActive = () => {
     this.setState({
       HelpCubeIsActive: true
     })
@@ -28,6 +50,7 @@ class L5 extends Component {
       <View style={{position: 'absolute', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center', top: 40}}>
         <View style={{alignItems: 'flex-end'}}>
           <ErrorModal modalVisible={this.props.modalVisible} errorWindow={this.props.errorWindow} level={this.props.level} />
+          <Achievment modalVisible={this.state.modalVisible} hideModal={this.hideModal} achieve={this.state.achieve}/>
           <View style={{flexDirection: 'row'}}>
             {this.props.cubeGenerator(1, 'powderblue')}
           </View>

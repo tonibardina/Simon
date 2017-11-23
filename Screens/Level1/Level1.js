@@ -158,7 +158,7 @@ class Level1 extends Component {
     AsyncStorage.getItem('level').then((value) => {
       if (!value) {
         console.log('-------SHIT--------')
-        AsyncStorage.setItem('level', 2)
+        AsyncStorage.setItem('level', '2')
       } else {
       }
     })

@@ -21,7 +21,7 @@ class GamesMenu extends Component {
   render () {
     return (
       <View style={{position: 'absolute', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
-        <View style={{position: 'absolute', top: 40, left: 0, width: '100%', height: '100%', justifyContent: 'flex-start', alignItems: 'center'}}>
+        <View style={{position: 'absolute', top: '10%', left: 0, width: '100%', height: '100%', justifyContent: 'flex-start', alignItems: 'center'}}>
           <Image style={{width: 200, height: 150, resizeMode: 'stretch', backgroundColor: 'transparent'}} source={require('../art/tittlex3.png')} />
         </View>
         <View>

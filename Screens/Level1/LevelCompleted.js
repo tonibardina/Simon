@@ -17,12 +17,13 @@ class LevelCompleted extends Component {
   nextLevel = () => {
     AsyncStorage.getItem('level').then((value) => {
       if (!value) {
-        AsyncStorage.setItem('level', '2')
+        console.log('WTF IS THE PRO?')
+        AsyncStorage.setItem('level','2')
       } else {
         console.log('next level!')
       }
     })
-    return this.props.setScreen('level2')
+    this.props.setScreen('level2')
   }
 
   render () {
