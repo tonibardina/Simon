@@ -38,9 +38,9 @@ class Level1 extends Component {
   getLevelStructure = () => {
     if (this.state.lvl !== 'end') {
       return (
-        <View style={{flex: 1, alignItems: 'center', backgroundColor: 'transparent', width: 500}}>
+        <View style={{flex: 1, alignItems: 'center', backgroundColor: 'transparent', width: 1000 }}>
           <View style={{backgroundColor: '#210b38', justifyContent: 'flex-start', alignItems: 'center', width: '100%'}}>
-            <Text style={{color: 'white', fontSize: 17, fontWeight: '500', top: 40, marginBottom: 40}}>
+            <Text style={{color: 'white', fontSize: 17, fontWeight: '500', top: '38%', marginBottom: '3%'}}>
               Level {this.state.lvl}
             </Text>
             <ProgresBar value={this.state.lvl} />

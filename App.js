@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import FitImage from 'react-native-fit-image'
+
 import {
   AsyncStorage,
   View,
@@ -27,7 +29,7 @@ export default class App extends Component {
     //AsyncStorage.removeItem('level')
     //AsyncStorage.removeItem('username')
     //AsyncStorage.removeItem('achievment')
-    AsyncStorage.getItem('level').then((value) => { console.log('-------->' + value) })
+    //AsyncStorage.getItem('level').then((value) => { console.log('-------->' + value) })
     if (this.state.screen === 'noregistered' || this.state.screen === 'menu') {
       AsyncStorage.getItem('username').then((value) => {
         if (value === null) {
@@ -76,7 +78,7 @@ export default class App extends Component {
   render () {
     return (
       <View style={{flex: 1, backgroundColor: '#0e0417'}}>
-        <Image syle={{flex: 1, resizeMode: 'stretch', top: 0, left: 0}} source={require('./art/back-prueba.png')} />
+        <FitImage originalWidth={1242} originalHeight={2678} source={require('./art/back-prueba.png')} />
         <View style={{position: 'absolute', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center', top: 0, left: 0, backgroundColor: 'transparent'}}>
           {this.screen()}
         </View>

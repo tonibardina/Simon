@@ -13,7 +13,7 @@ class L1 extends Component {
   }
   render () {
     return (
-      <View style={{backgroundColor: 'transparent', marginTop: 40}}>
+      <View style={{position: 'absolute', backgroundColor: 'transparent', justifyContent: 'center', alignItems: 'center', top: '30%'}}>
         <ErrorModal modalVisible={this.props.modalVisible} errorWindow={this.props.errorWindow} level={this.state.level} />
         {this.props.cubeGenerator(1, 'powderblue')}
         {this.props.cubeGenerator(2, 'skyblue')}

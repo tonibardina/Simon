@@ -38,7 +38,7 @@ class L3 extends Component {
 
   render () {
     return (
-      <View style={{position: 'absolute', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center', top: 40}} >
+      <View style={{position: 'absolute', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center', top: '12%'}} >
         <ErrorModal modalVisible={this.props.modalVisible} errorWindow={this.props.errorWindow} level={this.props.level} />
         <Achievment modalVisible={this.state.modalVisible} hideModal={this.hideModal} />
         <View style={{

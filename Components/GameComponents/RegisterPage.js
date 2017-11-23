@@ -41,10 +41,10 @@ class RegisterPage extends Component {
           Hello, how do you want me to call you?
         </Text>
         <TextInput
-          style={{marginTop: 20, height: 30, width: 200, backgroundColor: 'white', borderWidth: 1, top: '20%'}}
+          style={{marginTop: 20, height: 30, width: 200, backgroundColor: 'white', borderWidth: 0, top: '20%'}}
           onChangeText={this.setUsername}
         />
-        <TouchableHighlight onPress={this.registerDone} style={{width: 100, alignItems: 'center', borderRadius: 20, top: 150}}>
+        <TouchableHighlight onPress={this.registerDone} style={{width: 100, alignItems: 'center', borderRadius: 20, top: '25%'}}>
           <Text style={{color: 'white', fontSize: 20}}>
             START
           </Text>
