@@ -17,12 +17,11 @@ class Cube extends Component {
 
   pressElement = (e) => {
     if (this.props.playing === true) {
+      this.props.userResponse(this.props.id)
       const lastNumber = this.props.sequence[this.props.sequence.length - 1]
       if (this.props.id === lastNumber && this.props.game.length === this.props.sequence.length - 1) {
         this.props.userResponse(this.props.id)
         this.props.gameCompleted()
-      } else if (this.props.playing) {
-        this.props.userResponse(this.props.id)
       } else if (this.props.game[this.props.game.length] !== this.props.id) {
         return Vibration.vibrate()
       }

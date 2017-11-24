@@ -82,21 +82,21 @@
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
 			remoteInfo = Simon;
 		};
-		0731D7001FC7390F001AB3E4 /* PBXContainerItemProxy */ = {
+		072BE9911FC846F900A936FE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = ADD01A681E09402E00F6D226;
 			remoteInfo = "RCTBlob-tvOS";
 		};
-		0731D7121FC7390F001AB3E4 /* PBXContainerItemProxy */ = {
+		072BE9A31FC846F900A936FE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 3DBE0D001F3B181A0099AA32;
 			remoteInfo = fishhook;
 		};
-		0731D7141FC7390F001AB3E4 /* PBXContainerItemProxy */ = {
+		072BE9A51FC846F900A936FE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */;
 			proxyType = 2;
@@ -414,8 +414,8 @@
 			children = (
 				139FDEF41B06529B00C62182 /* libRCTWebSocket.a */,
 				3DAD3E991DF850E9000B6D8A /* libRCTWebSocket-tvOS.a */,
-				0731D7131FC7390F001AB3E4 /* libfishhook.a */,
-				0731D7151FC7390F001AB3E4 /* libfishhook-tvOS.a */,
+				072BE9A41FC846F900A936FE /* libfishhook.a */,
+				072BE9A61FC846F900A936FE /* libfishhook-tvOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -523,7 +523,7 @@
 			isa = PBXGroup;
 			children = (
 				ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */,
-				0731D7011FC7390F001AB3E4 /* libRCTBlob-tvOS.a */,
+				072BE9921FC846F900A936FE /* libRCTBlob-tvOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -738,25 +738,25 @@
 			remoteRef = 00C302E31ABCB9EE00DB3ED1 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		0731D7011FC7390F001AB3E4 /* libRCTBlob-tvOS.a */ = {
+		072BE9921FC846F900A936FE /* libRCTBlob-tvOS.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = "libRCTBlob-tvOS.a";
-			remoteRef = 0731D7001FC7390F001AB3E4 /* PBXContainerItemProxy */;
+			remoteRef = 072BE9911FC846F900A936FE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		0731D7131FC7390F001AB3E4 /* libfishhook.a */ = {
+		072BE9A41FC846F900A936FE /* libfishhook.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libfishhook.a;
-			remoteRef = 0731D7121FC7390F001AB3E4 /* PBXContainerItemProxy */;
+			remoteRef = 072BE9A31FC846F900A936FE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		0731D7151FC7390F001AB3E4 /* libfishhook-tvOS.a */ = {
+		072BE9A61FC846F900A936FE /* libfishhook-tvOS.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = "libfishhook-tvOS.a";
-			remoteRef = 0731D7141FC7390F001AB3E4 /* PBXContainerItemProxy */;
+			remoteRef = 072BE9A51FC846F900A936FE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		139105C11AF99BAD00B5F7CC /* libRCTSettings.a */ = {
