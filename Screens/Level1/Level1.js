@@ -11,7 +11,8 @@ import ProgresBar from '../../Components/GameComponents/ProgresBar'
 import {
   View,
   Text,
-  AsyncStorage
+  AsyncStorage,
+  Vibration
 } from 'react-native'
 
 class Level1 extends Component {
@@ -31,8 +32,8 @@ class Level1 extends Component {
 
   //Preparing components
 
-  cubeGenerator = (num, color) => {
-    return <Cube sequence={this.state.sequence} game={this.state.game} id={num} userResponse={this.userResponse} playing={this.state.playing} gameCompleted={this.gameCompleted} completed={this.state.completed} color={color} size={60} />
+  cubeGenerator = (num) => {
+    return <Cube sequence={this.state.sequence} game={this.state.game} id={num} userResponse={this.userResponse} playing={this.state.playing} gameCompleted={this.gameCompleted} completed={this.state.completed} size={60} />
   }
 
   getLevelStructure = () => {
@@ -93,7 +94,7 @@ class Level1 extends Component {
   }
 
   userResponse = (cube) => {
-    if (cube !== this.state.sequence[this.state.counter]) {
+    if (cube !== this.state.sequence[this.state.counter] && cube !== this.state.sequence[this.state.counter - 1]) {
       this.setState({
         game: [],
         modalVisible: true
@@ -107,6 +108,7 @@ class Level1 extends Component {
   }
 
   errorWindow = () => {
+    Vibration.vibrate()
     this.setState({
       lvl: 1,
       modalVisible: false,
@@ -157,7 +159,6 @@ class Level1 extends Component {
   goToMenu = () => {
     AsyncStorage.getItem('level').then((value) => {
       if (!value) {
-        console.log('-------SHIT--------')
         AsyncStorage.setItem('level', '2')
       } else {
       }

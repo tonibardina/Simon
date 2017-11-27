@@ -6,7 +6,7 @@ import {
   Image
 } from 'react-native'
 
-class HelpCubeActivator extends Component {
+class HelpCubeInverseActivator extends Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -29,10 +29,9 @@ class HelpCubeActivator extends Component {
         backgroundColor: '#dc143c'
       }
     })
-    this.pressElement = this.pressElement.bind(this)
   }
 
-  pressElement (e) {
+  pressElement = (e) => {
     (this.props.id === this.props.number && this.props.sequence[this.props.game.length] === this.props.number) ? this.props.activateHelp() : console.log(this.props.id)
     if (this.props.playing === true) {
       const lastNumber = this.props.sequence[this.props.sequence.length - 1]
@@ -56,11 +55,11 @@ class HelpCubeActivator extends Component {
   render () {
     const style = this.defineStyle()
     return (
-      <TouchableHighlight onPress={this.pressElement} underlayColor='transparent'>
+      <TouchableHighlight onPress={this.pressElement} underlayColor='white'>
         {style}
       </TouchableHighlight>
     )
   }
 }
 
-export default HelpCubeActivator
+export default HelpCubeInverseActivator

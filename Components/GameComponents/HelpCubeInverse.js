@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
 
 import {
-  StyleSheet,
   TouchableHighlight,
   Image
 } from 'react-native'
 
-class HelpCube extends Component {
+class HelpCubeInverse extends Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -15,7 +14,7 @@ class HelpCube extends Component {
   }
 
   setHelp () {
-    const helpUser = <Image source={require('../../art/help-cube.png')} style={{height: 60, width: 60, margin: 2}} />
+    const helpUser = <Image source={require('../../art/help-cubeInverse.png')} style={{height: 60, width: 60, margin: 2}} />
     const block = <Image style={{margin: 2, width: 60, height: 60, resizeMode: 'stretch'}} source={require('../../art/cube-brick.png')} />
     let cube = this.props.isActive ? helpUser : block
     return cube
@@ -30,4 +29,4 @@ class HelpCube extends Component {
   }
 }
 
-export default HelpCube
+export default HelpCubeInverse

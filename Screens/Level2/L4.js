@@ -1,68 +1,63 @@
 import React, { Component } from 'react'
 import Go from '../../Components/GameComponents/Go'
 import ErrorModal from '../../Components/GameComponents/ErrorModal'
-import ColorBlock from '../../Components/GameComponents/ColorBlock'
-import Achievment from '../../Components/GameComponents/Achievment'
+import CubeBlack from '../../Components/GameComponents/CubeBlack'
 
 import {
-  View,
-  AsyncStorage
+  View
 } from 'react-native'
 
-class L1 extends Component {
+class L4 extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      level: 1,
-      greenCubes: [undefined, 1, 4, 6, 7, 9],
-      achieve: 3,
-      modalVisible: false,
-      sequence: [6, 2, 4, 3, 1, 5, 9, 7, 8]
+      level: 4,
+      sequence: [2, 4, 5, 1, 3, 7, 6, 9, 8]
     }
   }
 
   componentDidMount () {
     this.props.setSequence(this.state.sequence)
-    AsyncStorage.getItem('achievment').then((value) =>{
-      if(value === '2') {
-        AsyncStorage.setItem('achievment', '3')
-        this.setState({
-          modalVisible: true
-        });
-      } else {
-        console.log('achievment already unlocked')
-      }
-    })
-  }
-
-  hideModal = () => {
-    this.setState({
-      modalVisible: false
-    });
   }
 
   render () {
     return (
-      <View style={{position: 'absolute', backgroundColor: 'transparent', justifyContent: 'center', alignItems: 'center', top: '30%'}}>
+      <View style={{position: 'absolute', backgroundColor: 'transparent', justifyContent: 'flex-start', alignItems: 'center', top: '18%'}}>
         <ErrorModal modalVisible={this.props.modalVisible} errorWindow={this.props.errorWindow} level={this.state.level} />
-        <Achievment modalVisible={this.state.modalVisible} hideModal={this.hideModal} achieve={this.state.achieve}/>
         <View style={{flexDirection: 'row'}}>
+          <CubeBlack />
           {this.props.cubeGenerator(1)}
+          <CubeBlack />
+          <CubeBlack />
           {this.props.cubeGenerator(2)}
+        </View>
+        <View style={{flexDirection: 'row'}}>
           {this.props.cubeGenerator(3)}
+          <CubeBlack />
+          <CubeBlack />
           {this.props.cubeGenerator(4)}
+          <CubeBlack />
         </View>
         <View style={{flexDirection: 'row'}}>
+          <CubeBlack />
           {this.props.cubeGenerator(5)}
-          <ColorBlock playing={this.props.playing} greenCubes={this.state.greenCubes} game={this.props.game} style={{margin: 2, resizeMode: 'stretch'}} />
           {this.props.cubeGenerator(6)}
+          <CubeBlack />
+          <CubeBlack />
         </View>
         <View style={{flexDirection: 'row'}}>
+          <CubeBlack />
+          <CubeBlack />
+          <CubeBlack />
           {this.props.cubeGenerator(7)}
-          {this.props.cubeGenerator(8)}
+          <CubeBlack />
         </View>
         <View style={{flexDirection: 'row'}}>
+          {this.props.cubeGenerator(8)}
           {this.props.cubeGenerator(9)}
+          <CubeBlack />
+          <CubeBlack />
+          <CubeBlack />
         </View>
         <Go startGame={this.props.startSequence} clicked={this.props.clicked} />
       </View>
@@ -70,4 +65,4 @@ class L1 extends Component {
   }
 }
 
-export default L1
+export default L4

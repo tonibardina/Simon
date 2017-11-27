@@ -16,18 +16,19 @@ export default class App extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      screen: 'menu',
+      screen: 'noregistered',
       user: {
-        username: null,
-        points: 'points',
-        levelsUnBlocked: 1
+        name: String,
+        level: Number,
+        achievments: Number,
+        points: Number
       }
     }
   }
 
   componentDidMount () {
     //AsyncStorage.removeItem('level')
-    //AsyncStorage.removeItem('username')
+    AsyncStorage.removeItem('username')
     //AsyncStorage.removeItem('achievment')
     if (this.state.screen === 'noregistered' || this.state.screen === 'menu') {
       AsyncStorage.getItem('username').then((value) => {

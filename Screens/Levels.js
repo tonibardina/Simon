@@ -19,7 +19,6 @@ class Levels extends Component {
   }
 
   componentDidMount () {
-    //AsyncStorage.removeItem('level')
     AsyncStorage.getItem('level').then((value) => {
       this.setState({
         level: value,
@@ -55,16 +54,16 @@ class Levels extends Component {
 
   render () {
     return (
-      <View style={{backgroundColor: 'transparent', position: 'absolute', width: '100%', height: '40%', alignItems: 'center'}} >
-        <ScrollView contentContainerStyle={{alignItems: 'flex-start', justifyContent: 'center', backgroundColor: 'transparent', left: 0}} showsHorizontalScrollIndicator={false}  horitzontal={true} backgroundColor={'transparent'} >
-          <View style={{flexDirection: 'row'}} >
-            <TouchableHighlight style={{marginLeft: 60, marginRight: 10}} onPress={this.chooseLevel1}>
+      <View>
+        <ScrollView contentContainerStyle={{width: 1000, backgroundColor:'transparent'}} centerContent={true} showsHorizontalScrollIndicator={false}  backgroundColor={'transparent'} horitzontal={true}>
+          <View style={{left: 0, flexDirection: 'row'}} >
+            <TouchableHighlight style={{marginLeft: 60, marginRight: 10}} onPress={this.chooseLevel1} underlayColor={'transparent'}>
               <Image source={require('../art/lvl1.png')} />
             </TouchableHighlight>
-            <TouchableHighlight style={{marginLeft: 25, marginRight: 10}} onPress={this.chooseLevel2}>
+            <TouchableHighlight style={{marginLeft: 25, marginRight: 10}} onPress={this.chooseLevel2} underlayColor={'transparent'}>
               {this.level2()}
             </TouchableHighlight>
-            <TouchableHighlight style={{marginLeft: 25}} onPress={this.chooseLevel3}>
+            <TouchableHighlight style={{marginLeft: 25}} onPress={this.chooseLevel3} underlayColor={'transparent'}>
               {this.level3()}
             </TouchableHighlight>
           </View>
@@ -73,6 +72,5 @@ class Levels extends Component {
     )
   }
 }
-
 
 export default Levels

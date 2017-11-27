@@ -12,13 +12,13 @@ class L2 extends Component {
       <View style={{position: 'absolute', justifyContent: 'center', alignItems: 'center', backgroundColor: 'transparent', top: '35%'}}>
         <ErrorModal modalVisible={this.props.modalVisible} errorWindow={this.props.errorWindow} level={this.props.level} />
         <View style={{flexDirection: 'row', backgroundColor: 'transparent'}}>
-          {this.props.cubeGenerator(1, 'powderblue')}
-          {this.props.cubeGenerator(2, 'skyblue')}
-          {this.props.cubeGenerator(3, 'steelblue')}
+          {this.props.cubeGenerator(1)}
+          {this.props.cubeGenerator(2)}
+          {this.props.cubeGenerator(3)}
         </View>
         <View style={{flexDirection: 'column'}}>
-          {this.props.cubeGenerator(4, 'darkslateblue')}
-          {this.props.cubeGenerator(5, 'powderblue')}
+          {this.props.cubeGenerator(4)}
+          {this.props.cubeGenerator(5)}
         </View>
         <View>
           <Go startGame={this.props.startSequence} clicked={this.props.clicked} />

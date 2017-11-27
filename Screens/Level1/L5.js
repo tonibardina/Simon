@@ -71,7 +71,7 @@ class L5 extends Component {
           }}>
             {this.props.cubeGenerator(6, 'steelblue')}
             {this.props.cubeGenerator(7, 'darkslateblue')}
-            <HelpCubeActivator activateHelp={this.setHelpCubeIsActive} sequence={this.props.sequence} game={this.props.game} id={8} userResponse={this.props.userResponse} playing={this.props.playing} gameCompleted={this.props.gameCompleted} completed={this.props.completed} />
+            <HelpCubeActivator number={8} activateHelp={this.setHelpCubeIsActive} sequence={this.props.sequence} game={this.props.game} id={8} userResponse={this.props.userResponse} playing={this.props.playing} gameCompleted={this.props.gameCompleted} completed={this.props.completed} />
             {this.props.cubeGenerator(9, 'steelblue')}
           </View>
         </View>

@@ -43,7 +43,7 @@ class ErrorModal extends Component {
         visible={this.props.modalVisible}
       >
         <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(0, 0, 0, 0.4)', padding: 20, borderRadius: 20}}>
-          <View style={{backgroundColor: 'rgba(51, 0, 102, 0.6)', justifyContent: 'center', alignItems: 'center', padding: 20, borderRadius: 20, shadowColor: '#000000', shadowOffset: {width: 0, height: 0}, shadowRadius: 26, shadowOpacity: 0.2}} >
+          <View style={{backgroundColor: 'rgba(9, 2, 17, 0.9)', justifyContent: 'center', alignItems: 'center', padding: 20, borderRadius: 20, shadowColor: '#000000', shadowOffset: {width: 0, height: 0}, shadowRadius: 26, shadowOpacity: 0.2}} >
             {this.showProgresion()}
             <Text style={{marginBottom: 20, color: 'white'}}>{this.showMotivationalText()}</Text>
             <TouchableHighlight style={{borderRadius: 10}} onPress={() => {

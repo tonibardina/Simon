@@ -9,15 +9,16 @@ import {
   AsyncStorage
 } from 'react-native'
 
-class L1 extends Component {
+class L3 extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      level: 1,
-      greenCubes: [undefined, 1, 4, 6, 7, 9],
+      level: 3,
+      greenCubes: [undefined, 3, 8, 7, 11],
+      greenCubes2: [4, 2, 5, 4, 10, 13],
       achieve: 3,
       modalVisible: false,
-      sequence: [6, 2, 4, 3, 1, 5, 9, 7, 8]
+      sequence: [1, 3, 2, 5, 4, 8, 6, 7, 9, 11, 10, 13, 12]
     }
   }
 
@@ -51,18 +52,21 @@ class L1 extends Component {
           {this.props.cubeGenerator(2)}
           {this.props.cubeGenerator(3)}
           {this.props.cubeGenerator(4)}
+          {this.props.cubeGenerator(5)}
         </View>
         <View style={{flexDirection: 'row'}}>
-          {this.props.cubeGenerator(5)}
           <ColorBlock playing={this.props.playing} greenCubes={this.state.greenCubes} game={this.props.game} style={{margin: 2, resizeMode: 'stretch'}} />
           {this.props.cubeGenerator(6)}
-        </View>
-        <View style={{flexDirection: 'row'}}>
           {this.props.cubeGenerator(7)}
           {this.props.cubeGenerator(8)}
+          <ColorBlock playing={this.props.playing} greenCubes={this.state.greenCubes2} game={this.props.game} style={{margin: 2, resizeMode: 'stretch'}} />
         </View>
         <View style={{flexDirection: 'row'}}>
           {this.props.cubeGenerator(9)}
+          {this.props.cubeGenerator(10)}
+          {this.props.cubeGenerator(11)}
+          {this.props.cubeGenerator(12)}
+          {this.props.cubeGenerator(13)}
         </View>
         <Go startGame={this.props.startSequence} clicked={this.props.clicked} />
       </View>
@@ -70,4 +74,4 @@ class L1 extends Component {
   }
 }
 
-export default L1
+export default L3

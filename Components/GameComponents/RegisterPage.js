@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import t from 'tcomb-form-native'
 
 import {
   View,
@@ -26,30 +27,7 @@ class RegisterPage extends Component {
 
   render () {
     return (
-      <View style={{
-        position: 'absolute',
-        width: '100%',
-        height: '100%',
-        alignItems: 'center',
-        justifyContent: 'flex-start',
-        top: 0,
-        left: 0,
-        backgroundColor: 'rgba(35, 10, 46, 0.7)'
-      }}>
-        <Image style={{width: 200, height: 150, resizeMode: 'stretch', backgroundColor: 'transparent', top: '19%'}} source={require('../../art/tittlex3.png')} />
-        <Text style={{fontSize: 26, color: 'white', backgroundColor: 'transparent', padding: 15, borderRadius: 2, top: '21%', width: '100%', textAlign: 'center'}}>
-          Hello, how do you want me to call you?
-        </Text>
-        <TextInput
-          style={{marginTop: 20, height: 30, width: 200, backgroundColor: 'white', borderWidth: 0, top: '20%'}}
-          onChangeText={this.setUsername}
-        />
-        <TouchableHighlight onPress={this.registerDone} style={{width: 100, alignItems: 'center', borderRadius: 20, top: '25%'}}>
-          <Text style={{color: 'white', fontSize: 20}}>
-            START
-          </Text>
-        </TouchableHighlight>
-      </View>
+      
     )
   }
 }

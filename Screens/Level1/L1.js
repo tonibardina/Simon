@@ -15,10 +15,10 @@ class L1 extends Component {
     return (
       <View style={{position: 'absolute', backgroundColor: 'transparent', justifyContent: 'center', alignItems: 'center', top: '30%'}}>
         <ErrorModal modalVisible={this.props.modalVisible} errorWindow={this.props.errorWindow} level={this.state.level} />
-        {this.props.cubeGenerator(1, 'powderblue')}
-        {this.props.cubeGenerator(2, 'skyblue')}
-        {this.props.cubeGenerator(3, 'steelblue')}
-        {this.props.cubeGenerator(4, 'darkslateblue')}
+        {this.props.cubeGenerator(1)}
+        {this.props.cubeGenerator(2)}
+        {this.props.cubeGenerator(3)}
+        {this.props.cubeGenerator(4)}
         <Go startGame={this.props.startSequence} clicked={this.props.clicked} />
       </View>
     )
