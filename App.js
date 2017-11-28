@@ -21,7 +21,7 @@ export default class App extends Component {
         name: String,
         level: Number,
         achievments: Number,
-        points: Number
+        points: Number,
       }
     }
   }
@@ -39,9 +39,7 @@ export default class App extends Component {
         } else {
           this.setState({
             user: {
-              username: value,
-              points: 'points',
-              levelsUnBlocked: 1
+              name: value,
             },
             screen: 'menu'
           })
@@ -57,7 +55,7 @@ export default class App extends Component {
   }
 
   screen = () => {
-    if (this.state.screen === 'menu') { return <GamesMenu setScreen={this.setScreen} username={this.state.user.username} /> }
+    if (this.state.screen === 'menu') { return <GamesMenu setScreen={this.setScreen} username={this.state.user.name} /> }
     if (this.state.screen === 'levels') { return <Levels setScreen={this.setScreen} /> }
     if (this.state.screen === 'level1') { return <Level1 setScreen={this.setScreen} /> }
     if (this.state.screen === 'level2') { return <Level2 setScreen={this.setScreen} /> }
