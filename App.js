@@ -10,13 +10,13 @@ import GamesMenu from './Screens/GamesMenu'
 import Levels from './Screens/Levels'
 import Level1 from './Screens/Level1/Level1'
 import Level2 from './Screens/Level2/Level2'
-import RegisterPage from './Components/GameComponents/RegisterPage'
+import Login from './Screens/Login'
 
 export default class App extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      screen: 'noregistered',
+      screen: 'menu',
       user: {
         name: String,
         level: Number,
@@ -28,13 +28,13 @@ export default class App extends Component {
 
   componentDidMount () {
     //AsyncStorage.removeItem('level')
-    AsyncStorage.removeItem('username')
+    //AsyncStorage.removeItem('username')
     //AsyncStorage.removeItem('achievment')
-    if (this.state.screen === 'noregistered' || this.state.screen === 'menu') {
+    if (this.state.screen === 'login' || this.state.screen === 'menu') {
       AsyncStorage.getItem('username').then((value) => {
         if (value === null) {
           this.setState({
-            screen: 'noregistered'
+            screen: 'login'
           })
         } else {
           this.setState({
@@ -50,17 +50,6 @@ export default class App extends Component {
     }
   }
 
-  setUser = (value) => {
-    AsyncStorage.setItem('username', value)
-    this.setState({
-      user: {
-        username: value,
-        points: 'points',
-        levelsUnBlocked: 1
-      }
-    })
-  }
-
   setScreen = (value) => {
     this.setState({
       screen: value
@@ -72,7 +61,7 @@ export default class App extends Component {
     if (this.state.screen === 'levels') { return <Levels setScreen={this.setScreen} /> }
     if (this.state.screen === 'level1') { return <Level1 setScreen={this.setScreen} /> }
     if (this.state.screen === 'level2') { return <Level2 setScreen={this.setScreen} /> }
-    if (this.state.screen === 'noregistered') { return <RegisterPage setUser={this.setUser} setScreen={this.setScreen} /> }
+    if (this.state.screen === 'login') { return <Login setScreen={this.setScreen} /> }
   }
 
   render () {
