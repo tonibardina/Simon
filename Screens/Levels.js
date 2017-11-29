@@ -7,7 +7,8 @@ import {
   Text,
   TouchableHighlight,
   AsyncStorage,
-  Image
+  Image,
+  Alert
 } from 'react-native'
 
 class Levels extends Component {
@@ -19,10 +20,25 @@ class Levels extends Component {
   }
 
   componentDidMount () {
-    AsyncStorage.getItem('level').then((value) => {
-      this.setState({
-        level: value,
-      });
+    AsyncStorage.getItem('username').then(value => {
+      if (value) {
+        fetch('http://localhost:3000/getUser', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            username: value
+          })
+        })
+        .then((user) => {
+          let player = JSON.parse(user._bodyInit)
+          this.setState({
+            level: player[0].level
+          })
+        })  
+      }
     })
   }
 
@@ -47,15 +63,13 @@ class Levels extends Component {
   }
 
   chooseLevel2 = () => {
-    AsyncStorage.getItem('level').then((value) => {
-      if (value > 1) { this.props.setScreen('level2')}
-    })
+    this.state.level > 1 ? his.props.setScreen('level2') : Alert.alert('Level Bloqued')
   }
 
   render () {
     return (
       <View>
-        <ScrollView contentContainerStyle={{width: 1000, backgroundColor:'transparent'}} centerContent={true} showsHorizontalScrollIndicator={false}  backgroundColor={'transparent'} horitzontal={true}>
+        <ScrollView centerContent={true} contentContainerStyle={{width: 1000, backgroundColor:'transparent', alignItems: 'flex-start',}} showsHorizontalScrollIndicator={false}  backgroundColor={'transparent'} horitzontal={true}>
           <View style={{left: 0, flexDirection: 'row'}} >
             <TouchableHighlight style={{marginLeft: 60, marginRight: 10}} onPress={this.chooseLevel1} underlayColor={'transparent'}>
               <Image source={require('../art/lvl1.png')} />

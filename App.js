@@ -6,46 +6,32 @@ import {
   View,
   Image
 } from 'react-native'
-import GamesMenu from './Screens/GamesMenu'
 import Levels from './Screens/Levels'
 import Level1 from './Screens/Level1/Level1'
 import Level2 from './Screens/Level2/Level2'
 import Login from './Screens/Login'
+import Ranking from './Screens/Ranking'
+import GamesMenu from './Screens/GamesMenu'
 
 export default class App extends Component {
   constructor (props) {
     super(props)
     this.state = {
       screen: 'menu',
-      user: {
-        name: String,
-        level: Number,
-        achievments: Number,
-        points: Number,
-      }
     }
   }
 
   componentDidMount () {
-    //AsyncStorage.removeItem('level')
     //AsyncStorage.removeItem('username')
-    //AsyncStorage.removeItem('achievment')
-    if (this.state.screen === 'login' || this.state.screen === 'menu') {
-      AsyncStorage.getItem('username').then((value) => {
-        if (value === null) {
-          this.setState({
-            screen: 'login'
-          })
-        } else {
-          this.setState({
-            user: {
-              name: value,
-            },
-            screen: 'menu'
-          })
-        }
-      })
-    }
+    AsyncStorage.getItem('username').then(value => {
+      if (value) {
+        console.log('user already registered!' + value)
+      } else {
+        this.setState({
+          screen: 'login',
+        })
+      }
+    })
   }
 
   setScreen = (value) => {
@@ -55,11 +41,12 @@ export default class App extends Component {
   }
 
   screen = () => {
-    if (this.state.screen === 'menu') { return <GamesMenu setScreen={this.setScreen} username={this.state.user.name} /> }
+    if (this.state.screen === 'menu') { return <GamesMenu setScreen={this.setScreen} /> }
     if (this.state.screen === 'levels') { return <Levels setScreen={this.setScreen} /> }
     if (this.state.screen === 'level1') { return <Level1 setScreen={this.setScreen} /> }
     if (this.state.screen === 'level2') { return <Level2 setScreen={this.setScreen} /> }
     if (this.state.screen === 'login') { return <Login setScreen={this.setScreen} /> }
+    if (this.state.screen === 'ranking') { return <Ranking setScreen={this.setScreen} /> }
   }
 
   render () {

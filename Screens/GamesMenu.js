@@ -12,49 +12,32 @@ import {
 class GamesMenu extends Component {
   constructor (props) {
     super(props)
-    this.state = {}
+    this.state = {
+      position: 0
+    }
   }
 
   goToLevels = () => {
     this.props.setScreen('levels')
   }
 
-  rankingPosition = () => {
-    fetch('http://localhost:3000/getPosition', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        username: this.props.username
-      })
-    })
-    .then(response => {
-      console.log(response._bodyText)
-      return response._bodyText
-    })
-    .catch((err) => {console.log(err)})
+  goToRanking = () => {
+    this.props.setScreen('ranking')
   }
 
   render () {
     return (
       <View style={{position: 'absolute', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
         <View style={{position: 'absolute', top: '10%', left: 0, width: '100%', height: '100%', justifyContent: 'flex-start', alignItems: 'center'}}>
-          <Image style={{width: 200, height: 150, resizeMode: 'stretch', backgroundColor: 'transparent'}} source={require('../art/tittlex3.png')} />
-        </View>
-        <View>
-          <Text style={styles.number}>
-            3
-          </Text>
+          <Image style={{width: '80%', height: '30%', resizeMode: 'stretch', backgroundColor: 'transparent'}} source={require('../art/tittlex3.png')} />
         </View>
         <View>
           <TouchableHighlight onPress={this.goToLevels} style={styles.button}>
             <Text style={styles.text}>
-              START
+              PLAY
             </Text>
           </TouchableHighlight>
-          <TouchableHighlight onPress={this.chooseGame1} style={styles.button}>
+          <TouchableHighlight onPress={this.goToRanking} style={styles.button}>
             <Text style={styles.text}>
               RANKING
             </Text>
@@ -85,7 +68,6 @@ const styles = StyleSheet.create({
     padding: 10,
     width: 190,
     fontSize: 85,
-    fontWeight: '1000'
     textAlign: 'center'
   }
 })

@@ -33,7 +33,6 @@ var options = {
 var Person = t.struct({
   name: t.String,
   password: t.String,
-  rememberMe: t.Boolean,
 })
 
 class Login extends Component {
@@ -58,12 +57,9 @@ class Login extends Component {
       })
     })
     .then((response) =>{if (response.ok) {
+      AsyncStorage.setItem('username', value.name)
       Alert.alert(`Welcome ${value.name}!`)
-      value.rememberMe ? AsyncStorage.setItem('username', value.name)
-      .then(() => {
-        this.props.setScreen('menu')
-      }) 
-      : this.props.setScreen('menu')
+      this.props.setScreen('menu')
     } else {
       Alert.alert('Incorrect username or password!')
     }})
@@ -86,12 +82,9 @@ class Login extends Component {
       })
     })
     .then((response) =>{if (response.ok) {
+      AsyncStorage.setItem('username', value.name)
       Alert.alert(`Welcome ${value.name}!`)
-      value.rememberMe ? AsyncStorage.setItem('username', value.name)
-      .then(() => {
-        this.props.setScreen('menu')
-      }) 
-      : this.props.setScreen('menu')
+      this.props.setScreen('menu')
     } else {
       Alert.alert('User already exists!')
     }})

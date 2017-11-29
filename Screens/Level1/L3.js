@@ -3,6 +3,7 @@ import Go from '../../Components/GameComponents/Go'
 import CubeBlack from '../../Components/GameComponents/CubeBlack'
 import ErrorModal from '../../Components/GameComponents/ErrorModal'
 import Achievment from '../../Components/GameComponents/Achievment'
+import getUserLevel from '../../Api/getUserLevel'
 
 import {
   View,
@@ -19,16 +20,7 @@ class L3 extends Component {
   }
 
   componentDidMount () {
-    AsyncStorage.getItem('achievment').then((value) =>{
-      if(value === null) {
-        AsyncStorage.setItem('achievment', '1')
-        this.setState({
-          modalVisible: true
-        });
-      } else {
-        console.log('achievment already unbloqued')
-      }
-    })
+    console.log(getUserLevel())
   }
 
   hideModal = () => {

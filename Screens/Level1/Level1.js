@@ -59,7 +59,7 @@ class Level1 extends Component {
     if (this.state.lvl === 2) { return <L2 changeLevel={this.changeLevel} level={this.state.lvl} modalVisible={this.state.modalVisible} startSequence={this.startSequence} clicked={this.state.clicked} cubeGenerator={this.cubeGenerator} errorWindow={this.errorWindow} /> }
     if (this.state.lvl === 3) { return <L3 changeLevel={this.changeLevel} level={this.state.lvl} modalVisible={this.state.modalVisible} startSequence={this.startSequence} clicked={this.state.clicked} cubeGenerator={this.cubeGenerator} errorWindow={this.errorWindow} /> }
     if (this.state.lvl === 4) { return <L4 changeLevel={this.changeLevel} level={this.state.lvl} modalVisible={this.state.modalVisible} startSequence={this.startSequence} clicked={this.state.clicked} cubeGenerator={this.cubeGenerator} errorWindow={this.errorWindow} /> }
-    if (this.state.lvl === 5) { return <L5 changeLevel={this.changeLevel} level={this.state.lvl} modalVisible={this.state.modalVisible} startSequence={this.startSequence} clicked={this.state.clicked} cubeGenerator={this.cubeGenerator} errorWindow={this.errorWindow} game={this.state.game} playing={this.state.playing} gameCompleted={this.gameCompleted} sequence={this.state.sequence} userResponse={this.userResponse} /> }
+    if (this.state.lvl === 5) { return <L5 achievments={this.props.fatherState.user.achievments} changeLevel={this.changeLevel} level={this.state.lvl} modalVisible={this.state.modalVisible} startSequence={this.startSequence} clicked={this.state.clicked} cubeGenerator={this.cubeGenerator} errorWindow={this.errorWindow} game={this.state.game} playing={this.state.playing} gameCompleted={this.gameCompleted} sequence={this.state.sequence} userResponse={this.userResponse} /> }
   }
 
   // Game progress
