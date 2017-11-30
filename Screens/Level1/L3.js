@@ -18,10 +18,6 @@ class L3 extends Component {
     }
   }
 
-  componentDidMount () {
-    console.log(getUserLevel())
-  }
-
   hideModal = () => {
     this.setState({
       modalVisible: false

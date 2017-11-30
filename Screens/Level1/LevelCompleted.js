@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {updateLevel} from '../../Api/server'
 
 import {
   StyleSheet,
@@ -15,15 +16,17 @@ class LevelCompleted extends Component {
   }
 
   nextLevel = () => {
-    AsyncStorage.getItem('level').then((value) => {
-      if (!value) {
-        console.log('WTF IS THE PRO?')
-        AsyncStorage.setItem('level','2')
-      } else {
-        console.log('next level!')
-      }
+    AsyncStorage.getItem('username').then((value) => {
+      updateLevel(value, 2)
     })
     this.props.setScreen('level2')
+  }
+
+  nextLevel = () => {
+    AsyncStorage.getItem('username').then((value) => {
+      updateLevel(value, 2)
+    })
+    this.props.setScreen('menu')
   }
 
   render () {

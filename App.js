@@ -4,7 +4,6 @@ import FitImage from 'react-native-fit-image'
 import {
   AsyncStorage,
   View,
-  Image
 } from 'react-native'
 import Levels from './Screens/Levels'
 import Level1 from './Screens/Level1/Level1'

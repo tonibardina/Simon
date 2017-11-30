@@ -20,28 +20,6 @@ class L5 extends Component {
     }
   }
 
-  componentDidMount () {
-    console.log('----->' + this.props.achievments)
-    if(this.props.achievments < 2) {
-      this.setState({
-        modalVisible: true
-      });
-      fetch('http://localhost:3000/updateAchievments', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          username: AsyncStorage.getItem('username'),
-          achievments: 2
-        })
-      })
-    } else {
-      console.log('achievment already unbloqued')
-    }
-  }
-
   hideModal = () => {
     this.setState({
       modalVisible: false
