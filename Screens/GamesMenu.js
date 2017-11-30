@@ -48,7 +48,7 @@ class GamesMenu extends Component {
         <View style={{position: 'absolute', top: '10%', left: 0, width: '100%', height: '100%', justifyContent: 'flex-start', alignItems: 'center'}}>
           <Image style={{width: '80%', height: '30%', resizeMode: 'stretch', backgroundColor: 'transparent'}} source={require('../art/tittlex3.png')} />
         </View>
-        <View>
+        <View style={{marginTop: '40%'}}>
           <TouchableHighlight onPress={this.goToLevels} style={styles.button}>
             <Text style={styles.text}>
               PLAY

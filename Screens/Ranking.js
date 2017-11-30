@@ -45,6 +45,7 @@ class Ranking extends Component {
         <ScrollView showsVerticalScrollIndicator={false}>
           {
             this.state.ranking && this.state.ranking.map(players => {
+              players.points = players.points || 0
               counter++
               return (
                 <View key={counter} style={styles.users}>
