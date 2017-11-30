@@ -6,7 +6,8 @@ import {
   TouchableHighlight,
   Image,
   Text,
-  StyleSheet
+  StyleSheet,
+  AsyncStorage
 } from 'react-native'
 
 class GamesMenu extends Component {
@@ -17,12 +18,28 @@ class GamesMenu extends Component {
     }
   }
 
+  componentDidMount () {
+    AsyncStorage.getItem('username').then(value => {
+      if (value) {
+        console.log('user already registered!' + value)
+      } else {
+        this.setState({
+          screen: 'login',
+        })
+      }
+    })
+  }
+
   goToLevels = () => {
     this.props.setScreen('levels')
   }
 
   goToRanking = () => {
     this.props.setScreen('ranking')
+  }
+
+  logOut = () => {
+    AsyncStorage.removeItem('username').then(this.props.setScreen('login'))
   }
 
   render () {
@@ -40,6 +57,11 @@ class GamesMenu extends Component {
           <TouchableHighlight onPress={this.goToRanking} style={styles.button}>
             <Text style={styles.text}>
               RANKING
+            </Text>
+          </TouchableHighlight>
+          <TouchableHighlight onPress={this.logOut} style={styles.button}>
+            <Text style={styles.text}>
+              LOGOUT
             </Text>
           </TouchableHighlight>
         </View>

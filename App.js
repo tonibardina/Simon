@@ -20,19 +20,6 @@ export default class App extends Component {
     }
   }
 
-  componentDidMount () {
-    //AsyncStorage.removeItem('username')
-    AsyncStorage.getItem('username').then(value => {
-      if (value) {
-        console.log('user already registered!' + value)
-      } else {
-        this.setState({
-          screen: 'login',
-        })
-      }
-    })
-  }
-
   setScreen = (value) => {
     this.setState({
       screen: value

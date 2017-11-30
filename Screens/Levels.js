@@ -16,7 +16,7 @@ class Levels extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      level: null
+      level: 1
     }
   }
 
@@ -28,7 +28,7 @@ class Levels extends Component {
           let player = JSON.parse(user._bodyInit)
           player[0].level ? console.log(player[0].level) : updateLevel(value, 1)
           this.setState({
-            level: player[0].level
+            level: player[0].level || 1
           })
         })
         .catch(err => console.log(err)) 
@@ -37,7 +37,8 @@ class Levels extends Component {
   }
 
   level2 = () => {
-    if (this.state.level < 2 || this.state.level === null) { 
+    if (this.state.level < 2 ) {
+      console.log(this.state.level + '')
       return <Image source={require('../art/lvl2B.png')} /> 
     } else {
       return <Image source={require('../art/lvl2.png')} />
