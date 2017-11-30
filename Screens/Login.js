@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import t from 'tcomb-form-native'
+import { login, signin } from '../Api/server'
 
 import {
   View,
@@ -43,52 +44,34 @@ class Login extends Component {
   }
 
   login = () => {
-    let value = this.refs.form.getValue();
+    let value = this.refs.form.getValue()
     if (value) {
-      fetch('http://localhost:3000/login', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        username: value.name,
-        password: value.password
-      })
-    })
-    .then((response) =>{if (response.ok) {
-      AsyncStorage.setItem('username', value.name)
-      Alert.alert(`Welcome ${value.name}!`)
-      this.props.setScreen('menu')
-    } else {
-      Alert.alert('Incorrect username or password!')
-    }})
-    .catch((err) => {console.log(err)})
+      login(value)
+      .then((response) => {
+        console.log(response)
+        if (response.ok) {
+          AsyncStorage.setItem('username', value.name)
+          Alert.alert(`Welcome ${value.name}!`)
+          this.props.setScreen('menu')
+        } else {
+          Alert.alert('Incorrect username or password!')
+        }})
+      .catch((err) => { console.log(err) })
     }
   }
 
   signin = () => {
     let value = this.refs.form.getValue();
     if (value) {
-      fetch('http://localhost:3000/register', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        username: value.name,
-        password: value.password
-      })
-    })
-    .then((response) =>{if (response.ok) {
-      AsyncStorage.setItem('username', value.name)
-      Alert.alert(`Welcome ${value.name}!`)
-      this.props.setScreen('menu')
-    } else {
-      Alert.alert('User already exists!')
-    }})
-    .catch((err) => {console.log(err)})
+      signin(value)
+      .then((response) =>{if (response.ok) {
+        AsyncStorage.setItem('username', value.name)
+        Alert.alert(`Welcome ${value.name}!`)
+        this.props.setScreen('menu')
+      } else {
+        Alert.alert('User already exists!')
+      }})
+      .catch((err) => {console.log(err)})
     }
   }
 

@@ -3,7 +3,6 @@ import Go from '../../Components/GameComponents/Go'
 import CubeBlack from '../../Components/GameComponents/CubeBlack'
 import ErrorModal from '../../Components/GameComponents/ErrorModal'
 import Achievment from '../../Components/GameComponents/Achievment'
-import getUserLevel from '../../Api/getUserLevel'
 
 import {
   View,

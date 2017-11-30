@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {getUser, updateLevel} from '../Api/server'
 
 import {
   StyleSheet,
@@ -15,35 +16,28 @@ class Levels extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      level: ''
+      level: null
     }
   }
 
   componentDidMount () {
     AsyncStorage.getItem('username').then(value => {
       if (value) {
-        fetch('http://localhost:3000/getUser', {
-          method: 'POST',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            username: value
-          })
-        })
+        getUser(value)
         .then((user) => {
           let player = JSON.parse(user._bodyInit)
+          player[0].level ? console.log(player[0].level) : updateLevel(value, 1)
           this.setState({
             level: player[0].level
           })
-        })  
+        })
+        .catch(err => console.log(err)) 
       }
     })
   }
 
   level2 = () => {
-    if (this.state.level < 2) { 
+    if (this.state.level < 2 || this.state.level === null) { 
       return <Image source={require('../art/lvl2B.png')} /> 
     } else {
       return <Image source={require('../art/lvl2.png')} />
@@ -54,7 +48,7 @@ class Levels extends Component {
     if (this.state.level < 3) { 
       return <Image source={require('../art/lvl3B.png')} /> 
     } else {
-      console.log('in progres...')
+      return <Image source={require('../art/lvl3B.png')} />
     }
   }
 
@@ -63,7 +57,7 @@ class Levels extends Component {
   }
 
   chooseLevel2 = () => {
-    this.state.level > 1 ? his.props.setScreen('level2') : Alert.alert('Level Bloqued')
+    this.state.level > 1 ? this.props.setScreen('level2') : Alert.alert('Level Bloqued')
   }
 
   render () {
@@ -77,7 +71,7 @@ class Levels extends Component {
             <TouchableHighlight style={{marginLeft: 25, marginRight: 10}} onPress={this.chooseLevel2} underlayColor={'transparent'}>
               {this.level2()}
             </TouchableHighlight>
-            <TouchableHighlight style={{marginLeft: 25}} onPress={this.chooseLevel3} underlayColor={'transparent'}>
+            <TouchableHighlight style={{marginLeft: 25}} underlayColor={'transparent'}>
               {this.level3()}
             </TouchableHighlight>
           </View>
