@@ -22,7 +22,7 @@ class Ranking extends Component {
   }
 
   componentWillMount () {
-    let response = fetch('http://localhost:3000/getRanking', {
+    let response = fetch('https://nameless-refuge-10092.herokuapp.com/getRanking', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',

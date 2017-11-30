@@ -1,6 +1,6 @@
 function login (value) {
   console.log(JSON.stringify(value) + '??')
-  return fetch('http://localhost:3000/login', {
+  return fetch('https://nameless-refuge-10092.herokuapp.com/login', {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -14,7 +14,7 @@ function login (value) {
 }
 
 function signin (value) {
-  return fetch('http://localhost:3000/register', {
+  return fetch('https://nameless-refuge-10092.herokuapp.com/register', {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -28,7 +28,7 @@ function signin (value) {
 }
 
 function getUser (value) {
-  return fetch('http://localhost:3000/getUser', {
+  return fetch('https://nameless-refuge-10092.herokuapp.com/getUser', {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -41,7 +41,7 @@ function getUser (value) {
 }
 
 function updateLevel (name, num) {
-  return fetch('http://localhost:3000/updateLevel', {
+  return fetch('https://nameless-refuge-10092.herokuapp.com/updateLevel', {
     method: 'POST',
     headers: {
       'Accept': 'application/json',

@@ -22,7 +22,7 @@ class LevelCompleted extends Component {
     this.props.setScreen('level2')
   }
 
-  nextLevel = () => {
+  goToMenu = () => {
     AsyncStorage.getItem('username').then((value) => {
       updateLevel(value, 2)
     })
