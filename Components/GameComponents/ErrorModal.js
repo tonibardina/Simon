@@ -4,7 +4,7 @@ import {
   View,
   Modal,
   Text,
-  TouchableHighlight
+  TouchableHighlight,
 } from 'react-native'
 
 class ErrorModal extends Component {

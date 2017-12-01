@@ -12,7 +12,7 @@ import {
   View,
   Text,
   AsyncStorage,
-  Vibration
+  Vibration,
 } from 'react-native'
 
 class Level1 extends Component {
@@ -101,6 +101,7 @@ class Level1 extends Component {
 
   userResponse = (cube) => {
     if (cube !== this.state.sequence[this.state.counter] && cube !== this.state.sequence[this.state.counter - 1]) {
+      Vibration.vibrate()
       this.setState({
         game: [],
         modalVisible: true
@@ -114,7 +115,6 @@ class Level1 extends Component {
   }
 
   errorWindow = () => {
-    Vibration.vibrate()
     this.setState({
       lvl: 1,
       modalVisible: false,

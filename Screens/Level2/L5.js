@@ -11,7 +11,7 @@ class L5 extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      level: 4,
+      level: 5,
       sequence: [4, 2, 1, 5, 7, 3, 6, 8, 9]
     }
   }
