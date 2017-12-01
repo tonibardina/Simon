@@ -14,7 +14,6 @@ class L3 extends Component {
     super(props)
     this.state = {
       modalVisible: false,
-      achieve: 1
     }
   }
 

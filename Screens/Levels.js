@@ -61,10 +61,19 @@ class Levels extends Component {
     this.state.level > 1 ? this.props.setScreen('level2') : Alert.alert('Level Bloqued')
   }
 
+  goToMenu = () => {
+    this.props.setScreen('menu')
+  }
+
   render () {
     return (
       <View>
-        <ScrollView centerContent={true} contentContainerStyle={{width: 1000, backgroundColor:'transparent', alignItems: 'flex-start',}} showsHorizontalScrollIndicator={false}  backgroundColor={'transparent'} horitzontal={true}>
+        <View style={{alignItems: 'center',justifyContent: 'center'}}>
+          <TouchableHighlight style={{marginTop: '20%'}} onPress={this.goToMenu}>
+            <Image style={{width: 45, height: 45}} source={require('../art/arrow-back.png')} />
+          </TouchableHighlight>
+        </View>
+        <ScrollView centerContent={true} contentContainerStyle={{width: 1000, alignItems: 'flex-start',}} showsHorizontalScrollIndicator={false} backgroundColor={'transparent'} horitzontal={true}>
           <View style={{left: 0, flexDirection: 'row'}} >
             <TouchableHighlight style={{marginLeft: 60, marginRight: 10}} onPress={this.chooseLevel1} underlayColor={'transparent'}>
               <Image source={require('../art/lvl1.png')} />

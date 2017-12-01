@@ -15,7 +15,6 @@ class L1 extends Component {
     this.state = {
       level: 1,
       greenCubes: [undefined, 1, 4, 6, 7, 9],
-      achieve: 3,
       modalVisible: false,
       sequence: [6, 2, 4, 3, 1, 5, 9, 7, 8]
     }

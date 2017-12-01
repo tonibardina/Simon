@@ -38,10 +38,19 @@ class Ranking extends Component {
     .catch(err => console.log)
   }
 
+  goToMenu = () => {
+    this.props.setScreen('menu')
+  }
+
   render () {
     let counter = 0
     return (
       <View style={styles.container}>
+        <View style={{marginBottom: '20%'}}>
+          <TouchableHighlight onPress={this.goToMenu}>
+            <Image style={{width: 45, height: 45}} source={require('../art/arrow-back.png')} />
+          </TouchableHighlight>
+        </View>
         <ScrollView showsVerticalScrollIndicator={false}>
           {
             this.state.ranking && this.state.ranking.map(players => {
@@ -80,7 +89,8 @@ const styles = StyleSheet.create({
     margin: 3,
     flexDirection: 'row',
     borderRadius: 5,
-    width: 340
+    width: 340,
+    height: '7%',
   },
   text: {
     color: 'white',
