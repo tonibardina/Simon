@@ -41,7 +41,7 @@ class Ranking extends Component {
     let counter = 0
     return (
       <View style={styles.container}>
-        <View style={{width: '100%', backgroundColor: '#e8c223', padding: 15, marginTop: '20%', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',}}>
+        <View style={{width: '100%', height: '15%', backgroundColor: '#e8c223', padding: 15, flexDirection: 'row', alignItems: 'flex-end', justifyContent: 'space-between',}}>
           <Text style={{color: 'white', fontSize: 20, textAlign: 'center'}}>
             Simon Best Players
           </Text>
