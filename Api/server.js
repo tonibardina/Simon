@@ -54,6 +54,20 @@ function updateLevel (name, num) {
   })
 }
 
+function updatePoints (name, num) {
+  return fetch('https://nameless-refuge-10092.herokuapp.com/updatePoints', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      username: name,
+      points: num
+    })
+  })
+}
+
 function getRanking () {
   return fetch('https://nameless-refuge-10092.herokuapp.com/getRanking', {
     method: 'POST',
@@ -77,4 +91,4 @@ function getPosition (name) {
   })
 }
 
-export { login, signin, getUser, updateLevel, getRanking, getPosition }
+export { login, signin, getUser, updateLevel, getRanking, getPosition, updatePoints }

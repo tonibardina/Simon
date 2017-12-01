@@ -7,6 +7,17 @@ import {
 } from 'react-native'
 
 class L2 extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      sequence: [3, 5, 2, 1, 4]
+    }
+  }
+
+  componentDidMount () {
+    this.props.setSequence(this.state.sequence)
+  }
+
   render () {
     return (
       <View style={{position: 'absolute', justifyContent: 'center', alignItems: 'center', backgroundColor: 'transparent', top: '35%'}}>

@@ -15,11 +15,13 @@ class L3 extends Component {
     super(props)
     this.state = {
       modalVisible: false,
-      achieve: 1
+      achieve: 1,
+      sequence: [3, 5, 2, 1, 4, 7, 6]
     }
   }
-
+  
   componentDidMount () {
+    this.props.setSequence(this.state.sequence)
     if (this.props.userLevel === 1) {
       this.setState({
         modalVisible: true

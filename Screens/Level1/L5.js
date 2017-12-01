@@ -16,11 +16,13 @@ class L5 extends Component {
     this.state = {
       HelpCubeIsActive: false,
       achieve: 2,
-      modalVisible: false
+      modalVisible: false,
+      sequence: [3, 5, 2, 4, 7, 6, 9, 8, 1]
     }
   }
 
   componentDidMount () {
+    this.props.setSequence(this.state.sequence)
     if (this.props.userLevel === 1) {
       this.setState({
         modalVisible: true
@@ -66,7 +68,7 @@ class L5 extends Component {
           }}>
             {this.props.cubeGenerator(6, 'steelblue')}
             {this.props.cubeGenerator(7, 'darkslateblue')}
-            <HelpCubeActivator number={8} activateHelp={this.setHelpCubeIsActive} sequence={this.props.sequence} game={this.props.game} id={8} userResponse={this.props.userResponse} playing={this.props.playing} gameCompleted={this.props.gameCompleted} completed={this.props.completed} />
+            <HelpCubeActivator number={8} activateHelp={this.setHelpCubeIsActive} sequence={this.state.sequence} game={this.props.game} id={8} userResponse={this.props.userResponse} playing={this.props.playing} gameCompleted={this.props.gameCompleted} completed={this.props.completed} />
             {this.props.cubeGenerator(9, 'steelblue')}
           </View>
         </View>

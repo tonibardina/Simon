@@ -21,7 +21,7 @@ class Level1 extends Component {
     this.state = {
       lvl: 1,
       playing: false,
-      sequence: [2, 1, 4, 3],
+      sequence: [],
       game: [],
       counter: 0,
       completed: false,
@@ -30,7 +30,7 @@ class Level1 extends Component {
     }
   }
 
-  //Preparing components
+  //Preparing game
 
   cubeGenerator = (num) => {
     return <Cube sequence={this.state.sequence} game={this.state.game} id={num} userResponse={this.userResponse} playing={this.state.playing} gameCompleted={this.gameCompleted} completed={this.state.completed} size={60} />
@@ -54,12 +54,18 @@ class Level1 extends Component {
     }
   }
 
+  setSequence = (sequence) => {
+    this.setState({
+      sequence: sequence
+    });
+  }
+
   getLevels = () => {
-    if (this.state.lvl === 1) { return <L1 changeLevel={this.changeLevel} level={this.state.lvl} modalVisible={this.state.modalVisible} startSequence={this.startSequence} clicked={this.state.clicked} cubeGenerator={this.cubeGenerator} errorWindow={this.errorWindow} /> }
-    if (this.state.lvl === 2) { return <L2 changeLevel={this.changeLevel} level={this.state.lvl} modalVisible={this.state.modalVisible} startSequence={this.startSequence} clicked={this.state.clicked} cubeGenerator={this.cubeGenerator} errorWindow={this.errorWindow} /> }
-    if (this.state.lvl === 3) { return <L3 userLevel={this.props.userLevel} changeLevel={this.changeLevel} level={this.state.lvl} modalVisible={this.state.modalVisible} startSequence={this.startSequence} clicked={this.state.clicked} cubeGenerator={this.cubeGenerator} errorWindow={this.errorWindow} /> }
-    if (this.state.lvl === 4) { return <L4 changeLevel={this.changeLevel} level={this.state.lvl} modalVisible={this.state.modalVisible} startSequence={this.startSequence} clicked={this.state.clicked} cubeGenerator={this.cubeGenerator} errorWindow={this.errorWindow} /> }
-    if (this.state.lvl === 5) { return <L5 userLevel={this.props.userLevel} changeLevel={this.changeLevel} level={this.state.lvl} modalVisible={this.state.modalVisible} startSequence={this.startSequence} clicked={this.state.clicked} cubeGenerator={this.cubeGenerator} errorWindow={this.errorWindow} game={this.state.game} playing={this.state.playing} gameCompleted={this.gameCompleted} sequence={this.state.sequence} userResponse={this.userResponse} /> }
+    if (this.state.lvl === 1) { return <L1 setSequence={this.setSequence} game={this.state.game} changeLevel={this.changeLevel} level={this.state.lvl} modalVisible={this.state.modalVisible} startSequence={this.startSequence} clicked={this.state.clicked} cubeGenerator={this.cubeGenerator} errorWindow={this.errorWindow} playing={this.state.playing} /> }
+    if (this.state.lvl === 2) { return <L2 setSequence={this.setSequence} changeLevel={this.changeLevel} level={this.state.lvl} modalVisible={this.state.modalVisible} startSequence={this.startSequence} clicked={this.state.clicked} cubeGenerator={this.cubeGenerator} errorWindow={this.errorWindow} game={this.state.game} playing={this.state.playing} gameCompleted={this.gameCompleted}  userResponse={this.userResponse} /> }
+    if (this.state.lvl === 3) { return <L3 userLevel={this.props.userLevel} setSequence={this.setSequence} game={this.state.game} changeLevel={this.changeLevel} level={this.state.lvl} modalVisible={this.state.modalVisible} startSequence={this.startSequence} clicked={this.state.clicked} cubeGenerator={this.cubeGenerator} errorWindow={this.errorWindow} game={this.state.game} playing={this.state.playing} gameCompleted={this.gameCompleted}  userResponse={this.userResponse} /> }
+    if (this.state.lvl === 4) { return <L4 setSequence={this.setSequence} modalVisible={this.state.modalVisible} game={this.state.game} changeLevel={this.changeLevel} level={this.state.lvl} startSequence={this.startSequence} clicked={this.state.clicked} cubeGenerator={this.cubeGenerator} errorWindow={this.errorWindow} playing={this.state.playing} /> }
+    if (this.state.lvl === 5) { return <L5 userLevel={this.props.userLevel} setSequence={this.setSequence} game={this.state.game} changeLevel={this.changeLevel} level={this.state.lvl} modalVisible={this.state.modalVisible} startSequence={this.startSequence} clicked={this.state.clicked} cubeGenerator={this.cubeGenerator} errorWindow={this.errorWindow} game={this.state.game} playing={this.state.playing} gameCompleted={this.gameCompleted}  userResponse={this.userResponse} /> }
   }
 
   // Game progress
@@ -113,7 +119,6 @@ class Level1 extends Component {
       lvl: 1,
       modalVisible: false,
       clicked: false,
-      sequence: [2, 1, 4, 3],
       game: [],
       playing: false
     })
@@ -121,22 +126,12 @@ class Level1 extends Component {
   }
 
   gameCompleted = () => {
-    let sequences = [
-      ['jojo'],
-      [2, 1, 4, 3],
-      [3, 5, 2, 1, 4],
-      [3, 5, 2, 1, 4, 7, 6],
-      [3, 5, 2, 1, 4, 7, 6, 9, 8],
-      [3, 5, 2, 4, 7, 6, 9, 8, 1],
-      [1, 4, 2, 3, 6, 5, 8, 7, 10, 9, 11]
-    ]
     if (this.state.lvl === 5) {
       this.setState({
         lvl: 'end'
       })
     } else {
       this.setState({
-        sequence: sequences[this.state.lvl + 1],
         lvl: this.state.lvl + 1,
         playing: false,
         game: [],
@@ -159,7 +154,7 @@ class Level1 extends Component {
   goToMenu = () => {
     AsyncStorage.getItem('level').then((value) => {
       if (!value) {
-        AsyncStorage.setItem('level', '2')
+        AsyncStorage.setItem('level', '3')
       } else {
       }
     })

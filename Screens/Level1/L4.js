@@ -7,6 +7,17 @@ import {
 } from 'react-native'
 
 class L4 extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      sequence: [3, 5, 2, 1, 4, 7, 6, 9, 8]
+    }
+  }
+
+  componentDidMount () {
+    this.props.setSequence(this.state.sequence)
+  }
+
   render () {
     return (
       <View style={{position: 'absolute', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center', top: 40}}>

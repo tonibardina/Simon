@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
     margin: 3,
     flexDirection: 'row',
     width: '90%',
-    height: '7%',
+    height: 60,
     borderRadius: 16,
     marginLeft: '5%',
   },

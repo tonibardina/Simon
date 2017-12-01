@@ -9,8 +9,16 @@ import {
 class L1 extends Component {
   constructor (props) {
     super(props)
-    this.state = {level: 1}
+    this.state = {
+      level: 1,
+      sequence: [2, 1, 4, 3]
+    }
   }
+
+  componentDidMount () {
+    this.props.setSequence(this.state.sequence)
+  }
+
   render () {
     return (
       <View style={{position: 'absolute', backgroundColor: 'transparent', justifyContent: 'center', alignItems: 'center', top: '30%'}}>
