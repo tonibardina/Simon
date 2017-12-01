@@ -41,10 +41,15 @@ class Ranking extends Component {
     let counter = 0
     return (
       <View style={styles.container}>
-        <View style={{width: '100%', backgroundColor: '#e8c223', padding: 15}}>
+        <View style={{width: '100%', backgroundColor: '#e8c223', padding: 15, marginTop: '20%', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',}}>
           <Text style={{color: 'white', fontSize: 20, textAlign: 'center'}}>
             Simon Best Players
           </Text>
+          <View>
+            <TouchableHighlight onPress={this.goToMenu}>
+              <Image style={{width: 45, height: 45}} source={require('../art/arrow-back.png')} />
+            </TouchableHighlight>
+          </View>
         </View>
         <ScrollView padding={5} paddingTop={15} backgroundColor={'#0e0408'} width={'100%'} showsVerticalScrollIndicator={false}>
           {
@@ -66,11 +71,6 @@ class Ranking extends Component {
             })
           }
         </ScrollView>
-        <View style={{marginTop: '10%'}}>
-          <TouchableHighlight onPress={this.goToMenu}>
-            <Image style={{width: 45, height: 45}} source={require('../art/arrow-back.png')} />
-          </TouchableHighlight>
-        </View>
       </View>
     )
   }
@@ -79,7 +79,7 @@ class Ranking extends Component {
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    height: '70%',
+    height: '100%',
     backgroundColor: 'transparent',
     justifyContent: 'center',
     alignItems: 'center',
