@@ -21,7 +21,7 @@ class Ranking extends Component {
     this.props.setScreen('levels')
   }
 
-  componentWillMount () {
+  componentDidMount () {
     let response = fetch('https://nameless-refuge-10092.herokuapp.com/getRanking', {
       method: 'POST',
       headers: {
@@ -46,19 +46,19 @@ class Ranking extends Component {
     let counter = 0
     return (
       <View style={styles.container}>
-        <View style={{marginBottom: '20%'}}>
+        <View>
           <TouchableHighlight onPress={this.goToMenu}>
             <Image style={{width: 45, height: 45}} source={require('../art/arrow-back.png')} />
           </TouchableHighlight>
         </View>
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <ScrollView padding={5} paddingTop={15} backgroundColor={'#0e0408'} width={'100%'} showsVerticalScrollIndicator={false}>
           {
             this.state.ranking && this.state.ranking.map(players => {
               players.points = players.points || 0
               counter++
               return (
                 <View key={counter} style={styles.users}>
-                  <View style={styles.positionNum}>
+                  <View style={counter < 4 ? styles.bests : styles.positionNum}>
                     <Text style={styles.num}>
                      {counter} 
                     </Text>
@@ -85,29 +85,39 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   users: {
-    backgroundColor: '#0e0417',
+    backgroundColor: 'white',
     margin: 3,
     flexDirection: 'row',
-    borderRadius: 5,
-    width: 340,
+    width: '90%',
     height: '7%',
+    borderRadius: 16,
+    marginLeft: '4%',
   },
   text: {
-    color: 'white',
+    color: '#0e0417',
     padding: 10,
     fontSize: 15,
     textAlign: 'left',
+    marginTop: '3%'
   },
   positionNum: {
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'white',
-    borderRadius: 2,
+    backgroundColor: '#0e0417',
+    borderRadius: 10,
     margin: 5,
-    width: '8%'
+    width: '15%'
+  },
+  bests: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#e8c223',
+    borderRadius: 10,
+    margin: 5,
+    width: '15%'
   },
   num: {
-    color: '#0e0417'
+    color: 'white'
   }
 })
 
