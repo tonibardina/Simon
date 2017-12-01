@@ -54,4 +54,27 @@ function updateLevel (name, num) {
   })
 }
 
-export { login, signin, getUser, updateLevel }
+function getRanking () {
+  return fetch('https://nameless-refuge-10092.herokuapp.com/getRanking', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
+  })
+}
+
+function getPosition (name) {
+  return fetch('https://nameless-refuge-10092.herokuapp.com/getPosition', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      username: name
+    })
+  })
+}
+
+export { login, signin, getUser, updateLevel, getRanking, getPosition }

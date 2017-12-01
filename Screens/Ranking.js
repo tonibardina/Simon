@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { getRanking } from '../Api/server'
 
 import {
   View,
@@ -22,17 +23,11 @@ class Ranking extends Component {
   }
 
   componentDidMount () {
-    let response = fetch('https://nameless-refuge-10092.herokuapp.com/getRanking', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-    })
+    getRanking()
     .then((info) => {
       let players = JSON.parse(info._bodyInit)
       this.setState({
-        ranking: players,
+        ranking: players
       })
     })
     .catch(err => console.log)
@@ -46,10 +41,10 @@ class Ranking extends Component {
     let counter = 0
     return (
       <View style={styles.container}>
-        <View>
-          <TouchableHighlight onPress={this.goToMenu}>
-            <Image style={{width: 45, height: 45}} source={require('../art/arrow-back.png')} />
-          </TouchableHighlight>
+        <View style={{width: '100%', backgroundColor: '#e8c223', padding: 15}}>
+          <Text style={{color: 'white', fontSize: 20, textAlign: 'center'}}>
+            Simon Best Players
+          </Text>
         </View>
         <ScrollView padding={5} paddingTop={15} backgroundColor={'#0e0408'} width={'100%'} showsVerticalScrollIndicator={false}>
           {
@@ -70,7 +65,12 @@ class Ranking extends Component {
               )
             })
           }
-        </ScrollView> 
+        </ScrollView>
+        <View style={{marginTop: '10%'}}>
+          <TouchableHighlight onPress={this.goToMenu}>
+            <Image style={{width: 45, height: 45}} source={require('../art/arrow-back.png')} />
+          </TouchableHighlight>
+        </View>
       </View>
     )
   }
@@ -79,7 +79,7 @@ class Ranking extends Component {
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    height: '50%',
+    height: '70%',
     backgroundColor: 'transparent',
     justifyContent: 'center',
     alignItems: 'center',
@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
     width: '90%',
     height: '7%',
     borderRadius: 16,
-    marginLeft: '4%',
+    marginLeft: '5%',
   },
   text: {
     color: '#0e0417',
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
   positionNum: {
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#0e0417',
+    backgroundColor: '#ab48cc',
     borderRadius: 10,
     margin: 5,
     width: '15%'

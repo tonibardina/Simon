@@ -16,22 +16,18 @@ class L1 extends Component {
       level: 1,
       greenCubes: [undefined, 1, 4, 6, 7, 9],
       modalVisible: false,
-      sequence: [6, 2, 4, 3, 1, 5, 9, 7, 8]
+      sequence: [6, 2, 4, 3, 1, 5, 9, 7, 8],
+      achieve: 3
     }
   }
 
   componentDidMount () {
     this.props.setSequence(this.state.sequence)
-    AsyncStorage.getItem('achievment').then((value) =>{
-      if(value === '2') {
-        AsyncStorage.setItem('achievment', '3')
-        this.setState({
-          modalVisible: true
-        });
-      } else {
-        console.log('achievment already unlocked')
-      }
-    })
+    if (this.props.userLevel === 2 || this.props.userLevel === 1 ) {
+      this.setState({
+        modalVisible: true
+      });
+    }
   }
 
   hideModal = () => {

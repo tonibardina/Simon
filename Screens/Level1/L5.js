@@ -20,6 +20,14 @@ class L5 extends Component {
     }
   }
 
+  componentDidMount () {
+    if (this.props.userLevel === 1) {
+      this.setState({
+        modalVisible: true
+      });
+    }
+  }
+
   hideModal = () => {
     this.setState({
       modalVisible: false

@@ -5,25 +5,12 @@ import {
   View,
   Text,
   TouchableHighlight,
-  AsyncStorage
 } from 'react-native'
 
 class LevelCompleted extends Component {
   constructor (props) {
     super(props)
     this.state = {}
-  }
-
-  nextLevel = () => {
-    AsyncStorage.getItem('level').then((value) => {
-      if (!value) {
-        console.log('WTF IS THE PRO?')
-        AsyncStorage.setItem('level','2')
-      } else {
-        console.log('next level!')
-      }
-    })
-    this.props.setScreen('level2')
   }
 
   render () {
@@ -36,7 +23,7 @@ class LevelCompleted extends Component {
           <Text style={{margin: 25, backgroundColor: 'transparent', color: 'white'}}>
             You just completed Level 1!
           </Text>
-          <TouchableHighlight style={styles.levelUp} underlayColor={'white'} onPress={this.nextLevel} >
+          <TouchableHighlight style={styles.levelUp} underlayColor={'white'} >
             <Text style={{color: 'white'}}>
               Next Level !
             </Text>

@@ -18,15 +18,15 @@ class LevelCompleted extends Component {
   nextLevel = () => {
     AsyncStorage.getItem('username').then((value) => {
       updateLevel(value, 2)
+      this.props.setScreen('level2')
     })
-    this.props.setScreen('level2')
   }
 
   goToMenu = () => {
     AsyncStorage.getItem('username').then((value) => {
       updateLevel(value, 2)
+      this.props.setScreen('menu')
     })
-    this.props.setScreen('menu')
   }
 
   render () {
@@ -44,7 +44,7 @@ class LevelCompleted extends Component {
               Next Level !
             </Text>
           </TouchableHighlight>
-          <TouchableHighlight style={styles.return} underlayColor={'white'} onPress={this.props.goToMenu} >
+          <TouchableHighlight style={styles.return} underlayColor={'white'} onPress={this.goToMenu} >
             <Text style={{color: 'white'}}>
               Menu
             </Text>

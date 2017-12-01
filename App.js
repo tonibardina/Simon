@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react'
 import FitImage from 'react-native-fit-image'
 
@@ -17,6 +18,7 @@ export default class App extends Component {
     super(props)
     this.state = {
       screen: 'menu',
+      userLevel: ''
     }
   }
 
@@ -26,11 +28,17 @@ export default class App extends Component {
     })
   }
 
+  setLevel = (value) => {
+    this.setState({
+      userLevel: value
+    });
+  }
+
   screen = () => {
     if (this.state.screen === 'menu') { return <GamesMenu setScreen={this.setScreen} /> }
-    if (this.state.screen === 'levels') { return <Levels setScreen={this.setScreen} /> }
-    if (this.state.screen === 'level1') { return <Level1 setScreen={this.setScreen} /> }
-    if (this.state.screen === 'level2') { return <Level2 setScreen={this.setScreen} /> }
+    if (this.state.screen === 'levels') { return <Levels setLevel={this.setLevel} setScreen={this.setScreen} /> }
+    if (this.state.screen === 'level1') { return <Level1 userLevel={this.state.userLevel} setScreen={this.setScreen} /> }
+    if (this.state.screen === 'level2') { return <Level2 userLevel={this.state.userLevel} setScreen={this.setScreen} /> }
     if (this.state.screen === 'login') { return <Login setScreen={this.setScreen} /> }
     if (this.state.screen === 'ranking') { return <Ranking setScreen={this.setScreen} /> }
   }

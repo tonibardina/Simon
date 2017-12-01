@@ -30,6 +30,7 @@ class Levels extends Component {
           this.setState({
             level: player[0].level || 1
           })
+          this.props.setLevel(player[0].level || 1)
         })
         .catch(err => console.log(err)) 
       }
@@ -38,7 +39,6 @@ class Levels extends Component {
 
   level2 = () => {
     if (this.state.level < 2 ) {
-      console.log(this.state.level + '')
       return <Image source={require('../art/lvl2B.png')} /> 
     } else {
       return <Image source={require('../art/lvl2.png')} />
@@ -58,7 +58,7 @@ class Levels extends Component {
   }
 
   chooseLevel2 = () => {
-    this.state.level > 1 ? this.props.setScreen('level2') : Alert.alert('Level Bloqued')
+    this.state.level > 1 ? this.props.setScreen('level2') : Alert.alert('Level Blocked')
   }
 
   goToMenu = () => {

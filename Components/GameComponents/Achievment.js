@@ -42,13 +42,13 @@ class Achievment extends Component {
         transparent={true}
         visible={this.props.modalVisible}
       >
-        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(0, 0, 0, 0.4)', padding: 20, borderRadius: 20}}>
-          <View style={{backgroundColor: 'rgba(9, 2, 17, 0.9)', justifyContent: 'center', alignItems: 'center', padding: 20, borderRadius: 20, shadowColor: '#000000', shadowOffset: {width: 0, height: 0}, shadowRadius: 26, shadowOpacity: 0.2}} >
+        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(9, 2, 17, 0.3)', padding: 20, borderRadius: 20}}>
+          <View style={{backgroundColor: 'white', justifyContent: 'center', alignItems: 'center', padding: 20, borderRadius: 20, shadowColor: '#000000', shadowOffset: {width: 0, height: 0}, shadowRadius: 26, shadowOpacity: 0.2}} >
             <Image style={{width: 220, height: 260, marginBottom: 20, marginTop: 10}} source={this.whatAchieveIsUnlocked()} />
-            <Text style={{marginBottom: 20, color: 'white', textAlign: 'center'}}>New Block Unlocked!{"\n"}
+            <Text style={{marginBottom: 20, color: '#330066', textAlign: 'center'}}>New Block Unlocked!{"\n"}
             {this.instructions()}</Text>
-            <TouchableHighlight style={{borderRadius: 10, marginBottom: 10}} onPress={() => {this.hideModal()} }>
-              <Text style={{backgroundColor: 'white', fontWeight: 'bold', color: '#330066', padding: 10, width: 200, textAlign: 'center'}}>
+            <TouchableHighlight style={{backgroundColor: '#ff9a3c', borderRadius: 10, marginBottom: 10}} onPress={() => {this.hideModal()} }>
+              <Text style={{fontWeight: 'bold', color: 'white', padding: 10, width: 200, textAlign: 'center'}}>
                 Continue
               </Text>
             </TouchableHighlight>

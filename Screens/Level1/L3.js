@@ -3,6 +3,7 @@ import Go from '../../Components/GameComponents/Go'
 import CubeBlack from '../../Components/GameComponents/CubeBlack'
 import ErrorModal from '../../Components/GameComponents/ErrorModal'
 import Achievment from '../../Components/GameComponents/Achievment'
+import { getUser } from '../../Api/server'
 
 import {
   View,
@@ -14,6 +15,15 @@ class L3 extends Component {
     super(props)
     this.state = {
       modalVisible: false,
+      achieve: 1
+    }
+  }
+
+  componentDidMount () {
+    if (this.props.userLevel === 1) {
+      this.setState({
+        modalVisible: true
+      });
     }
   }
 

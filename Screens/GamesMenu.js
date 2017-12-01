@@ -46,7 +46,7 @@ class GamesMenu extends Component {
     return (
       <View style={{position: 'absolute', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
         <View style={{position: 'absolute', top: '10%', left: 0, width: '100%', height: '100%', justifyContent: 'flex-start', alignItems: 'center'}}>
-          <Image style={{width: '80%', height: '30%', resizeMode: 'stretch', backgroundColor: 'transparent'}} source={require('../art/tittlex3.png')} />
+          <Image style={{width: '80%', height: '28%', resizeMode: 'stretch', backgroundColor: 'transparent'}} source={require('../art/tittlex3.png')} />
         </View>
         <View style={{marginTop: '40%'}}>
           <TouchableHighlight onPress={this.goToLevels} style={styles.button}>
@@ -75,8 +75,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: 200,
     margin: 10,
-    backgroundColor: '#040419',
-    borderRadius: 7
+    backgroundColor: '#b94add',
+    borderRadius: 13,
+    padding: 5,
   },
   text: {
     color: 'white',

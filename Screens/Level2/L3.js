@@ -24,16 +24,6 @@ class L3 extends Component {
 
   componentDidMount () {
     this.props.setSequence(this.state.sequence)
-    AsyncStorage.getItem('achievment').then((value) =>{
-      if(value === '2') {
-        AsyncStorage.setItem('achievment', '3')
-        this.setState({
-          modalVisible: true
-        });
-      } else {
-        console.log('achievment already unlocked')
-      }
-    })
   }
 
   hideModal = () => {
