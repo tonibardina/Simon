@@ -1,1 +1,1 @@
-[Simon](https://imgur.com/a/eksde)
+[Simon](https://i.imgur.com/frUAbZS.jpg)
